@@ -33,5 +33,3 @@ jobs:
       with:
         createprofile: true
         filepath: 'binaries_to_upload/'
-        vid: ${{ secrets.VERACODE_ID }}
-        vkey: ${{ secrets.VERACODE_KEY }}
