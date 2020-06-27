@@ -19,9 +19,11 @@ inputs:
   vid:  # id of input
     description: 'vid'
     required: true
+    default: '${{ secrets.VERACODE_ID }}'
   vkey:  # id of input
     description: 'vkey'
     required: true
+    default: '${{ secrets.VERACODE_KEY }}'
 # outputs:
 #   time: # id of output
 #     description: 'The time we greeted you'
