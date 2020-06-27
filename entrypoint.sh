@@ -14,6 +14,11 @@ version=$4
 vid=$5
 vkey=$6
 
+
+which unzip
+which java
+which curl
+
 curl https://tools.veracode.com/integrations/API-Wrappers/Java/bin/VeracodeJavaAPI.zip -o VeracodeJavaAPI.zip
 unzip VeracodeJavaAPI.zip VeracodeJavaAPI.jar
 java -jar VeracodeJavaAPI.jar \
@@ -24,5 +29,5 @@ java -jar VeracodeJavaAPI.jar \
      -version ${version} \
      -vid ${vid} \
      -vkey ${vkey} \
-     -autoscan true 
+     -autoscan true
 
