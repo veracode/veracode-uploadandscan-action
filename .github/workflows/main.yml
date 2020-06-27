@@ -21,23 +21,14 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Single line script -- Hello, world!
     
-    - name: Hello world action step
+    - name: Veracode Upload and Scan Action Step
       uses: ./ # Uses an action in the root directory
-      id: hello
+      id: upload_and_scan
       with:
-        who-to-greet: 'Veracode Community!'
-        
-    # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
-        
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        echo Multi line script
-        echo Works.
+        appname: 'my App'
+        createprofile: 'true'
+        filepath: '**.jar'
+        version: 'Version 1'
+        vid: 'my vid ' 
+        vkey: 'My vkey invalid'

@@ -1,23 +1,42 @@
-# Hello world docker action
+# Veracode Community Upload And Scan Action
 
-This action prints "Hello World" to the log or "Hello" + the name of a person to greet. To learn how this action was built, see "[Creating a Docker container action](https://help.github.com/en/articles/creating-a-docker-container-action)" in the GitHub Help documentation.
+This action runs the Veracode Java Wrapper's 'upload and scan' action.
 
 ## Inputs
 
-### `who-to-greet`
+### `appname`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** appname
 
-## Outputs
+### `createprofile`
 
-### `time`
+**Required** createprofile
 
-The time we greeted you.
+### `filepath`
+
+**Required** filepath
+
+### `version`
+
+**Required** version
+
+### `vid`
+
+**Required** vid
+
+### `vkey`
+
+**Required** vkey
 
 ## Example usage
 
 ```yaml
 uses: actions/hello-world-docker-action@master
-with:
-  who-to-greet: 'Mona the Octocat'
+  with:
+    appname: 'my App name'
+    createprofile: 'true'
+    filepath: '**.jar'
+    version: 'My scan name 1'
+    vid: 'my vid '
+    vkey: 'My vkey invalid'
 ```

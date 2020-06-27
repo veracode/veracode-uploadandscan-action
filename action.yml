@@ -1,15 +1,34 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Veracode Upload And Scan'
+description: 'Upload files to veracode and start a static scan.'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  appname:  # id of input
+    description: 'appname'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  createprofile:  # id of input
+    description: 'createprofile'
+    required: true
+  filepath:  # id of input
+    description: 'filepath'
+    required: true
+  version:  # id of input
+    description: 'version'
+    required: true
+  vid:  # id of input
+    description: 'vid'
+    required: true
+  vkey:  # id of input
+    description: 'vkey'
+    required: true
+# outputs:
+#   time: # id of output
+#     description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.appname }}
+    - ${{ inputs.createprofile }}
+    - ${{ inputs.filepath }}
+    - ${{ inputs.version }}
+    - ${{ inputs.vid }}
+    - ${{ inputs.vkey }}
