@@ -1,12 +1,5 @@
 #!/bin/sh -l
 
-echo "Debug appname $1"
-echo "Debug createprofile $2"
-echo "Debug filepath $3"
-echo "Debug version $4"
-echo "Debug vid $5"
-echo "Debug vkey $6"
-
 appname=$1
 createprofile=$2
 filepath=$3
@@ -14,15 +7,10 @@ version=$4
 vid=$5
 vkey=$6
 
-ls -la
-ls /
-
-echo "appname $appname"
-echo "createprofile $createprofile"
-echo "filepath $filepath"
-echo "version $version"
-echo "vid $vid"
-echo "vkey $vkey"
+echo "appname: $appname"
+echo "createprofile: $createprofile"
+echo "filepath: $filepath"
+echo "version: $version"
 
 curl https://tools.veracode.com/integrations/API-Wrappers/Java/bin/VeracodeJavaAPI.zip -o VeracodeJavaAPI.zip
 unzip VeracodeJavaAPI.zip VeracodeJavaAPI.jar
@@ -35,4 +23,3 @@ java -jar VeracodeJavaAPI.jar \
      -vid "$vid" \
      -vkey "$vkey" \
      -autoscan true
-
