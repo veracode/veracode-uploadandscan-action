@@ -14,6 +14,9 @@ version=$4
 vid=$5
 vkey=$6
 
+ls -la
+ls /
+
 echo "appname $appname"
 echo "createprofile $createprofile"
 echo "filepath $filepath"
