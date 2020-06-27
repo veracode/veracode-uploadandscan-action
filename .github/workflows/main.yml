@@ -31,5 +31,4 @@ jobs:
       uses: ./ # Uses an action in the root directory
       id: upload_and_scan
       with:
-        createprofile: true
         filepath: 'binaries_to_upload/'
