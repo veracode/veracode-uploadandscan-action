@@ -25,11 +25,11 @@ curl https://tools.veracode.com/integrations/API-Wrappers/Java/bin/VeracodeJavaA
 unzip VeracodeJavaAPI.zip VeracodeJavaAPI.jar
 java -jar VeracodeJavaAPI.jar \
      -action UploadAndScan \
-     -appname ${appname} \
-     -createprofile ${createprofile} \
-     -filepath ${filepath} \
-     -version ${version} \
-     -vid ${vid} \
-     -vkey ${vkey} \
+     -appname "$appname" \
+     -createprofile "$createprofile" \
+     -filepath "$filepath" \
+     -version "$version" \
+     -vid "$vid" \
+     -vkey "$vkey" \
      -autoscan true
 
