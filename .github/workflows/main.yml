@@ -27,8 +27,8 @@ jobs:
       id: upload_and_scan
       with:
         appname: 'my App'
-        createprofile: 'true'
+        createprofile: true
         filepath: '**.jar'
         version: 'Version 1'
-        vid: 'my vid ' 
-        vkey: 'My vkey invalid'
+        vid: ${{ secrets.VERACODE_ID }}
+        vkey: ${{ secrets.VERACODE_KEY }}
