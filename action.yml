@@ -4,15 +4,18 @@ inputs:
   appname:  # id of input
     description: 'appname'
     required: true
+    default: '${{ github.repository }}'
   createprofile:  # id of input
     description: 'createprofile'
     required: true
+    default: true
   filepath:  # id of input
     description: 'filepath'
     required: true
   version:  # id of input
     description: 'version'
     required: true
+    default: 'Scan from Github job: ${{ github.run_id }}'
   vid:  # id of input
     description: 'vid'
     required: true
