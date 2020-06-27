@@ -33,7 +33,7 @@ jobs:
       with:
         appname: 'my App'
         createprofile: true
-        filepath: 'binaries_to_upload/*.jar'
+        filepath: 'binaries_to_upload/'
         version: 'Version 1'
         vid: ${{ secrets.VERACODE_ID }}
         vkey: ${{ secrets.VERACODE_KEY }}
