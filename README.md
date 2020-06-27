@@ -7,8 +7,12 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 ### `appname` 
 **Required:** The application name.
 
+**Default:** '${{ github.repository }}'
+
 ### `createprofile`
 **Required:**  True to create a new application profile.
+
+**Default:** true
 
 ### `filepath`
 **Required:** Filepath or folderpath of the file or directory to upload. (If the last character is a backslash it needs to be escaped: \\\\).
@@ -16,11 +20,17 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 ### `version`
 **Required:** The name or version number of the new build.
 
+**Default:** 'Scan from Github job: ${{ github.run_id }}'
+
 ### `vid`
 **Required:** Veracode API ID.
 
+**Default:** '${{ secrets.VERACODE_ID }}'
+
 ### `vkey`
 **Required:** Veracode API key.
+
+**Default:** '${{ secrets.VERACODE_KEY }}'
 
 ## Example usage
 
@@ -37,10 +47,7 @@ The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS 
     path: folder_to_upload/*.jar # Wildcards can be used to filter the files copied into the container. See: https://github.com/actions/upload-artifact
 - uses: actions/veracode-community-uploadandscan-action@master # Run the uploadandscan action. Inputs are described above.
   with:
-    appname: 'My App Name'
-    createprofile: 'true'
     filepath: 'folder_to_upload/'
-    version: 'My Scan Name 1'
-    vid: ${{ secrets.VERACODE_ID }}
-    vkey: ${{ secrets.VERACODE_KEY }}
+    vid: '${{ secrets.VERACODE_ID }}'
+    vkey: '${{ secrets.VERACODE_KEY }}'
 ```
