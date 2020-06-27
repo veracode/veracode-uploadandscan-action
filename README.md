@@ -25,12 +25,8 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 ### `vid`
 **Required:** Veracode API ID.
 
-**Default:** '${{ secrets.VERACODE_ID }}'
-
 ### `vkey`
 **Required:** Veracode API key.
-
-**Default:** '${{ secrets.VERACODE_KEY }}'
 
 ## Example usage
 
