@@ -32,3 +32,5 @@ jobs:
       id: upload_and_scan
       with:
         filepath: 'binaries_to_upload/'
+        vid: '${{ secrets.VERACODE_ID }}'
+        vkey: '${{ secrets.VERACODE_KEY }}'
