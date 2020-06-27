@@ -14,10 +14,12 @@ version=$4
 vid=$5
 vkey=$6
 
-
-which unzip
-which java
-which curl
+echo "appname $appname"
+echo "createprofile $createprofile"
+echo "filepath $filepath"
+echo "version $version"
+echo "vid $vid"
+echo "vkey $vkey"
 
 curl https://tools.veracode.com/integrations/API-Wrappers/Java/bin/VeracodeJavaAPI.zip -o VeracodeJavaAPI.zip
 unzip VeracodeJavaAPI.zip VeracodeJavaAPI.jar
