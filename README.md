@@ -11,7 +11,7 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 **Required:**  True to create a new application profile.
 
 ### `filepath`
-**Required:** Filepath or folderpath of the file or directory to upload. (If the last character is a backslash it needs to be escaped: \\).
+**Required:** Filepath or folderpath of the file or directory to upload. (If the last character is a backslash it needs to be escaped: \\\\).
 
 ### `version`
 **Required:** The name or version number of the new build.
