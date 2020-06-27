@@ -21,14 +21,19 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    
+    - uses: actions/setup-java@v1
+      with: 
+        java-version: '8'
+    - uses: actions/upload-artifact@v2
+      with:
+        path: binaries_to_upload/*.jar
     - name: Veracode Upload and Scan Action Step
       uses: ./ # Uses an action in the root directory
       id: upload_and_scan
       with:
         appname: 'my App'
-        createprofile: 'true'
-        filepath: '**.jar'
+        createprofile: true
+        filepath: '/binaries_to_upload/*.jar'
         version: 'Version 1'
-        vid: 'my vid ' 
-        vkey: 'My vkey invalid'
+        vid: ${{ secrets.VERACODE_ID }}
+        vkey: ${{ secrets.VERACODE_KEY }}

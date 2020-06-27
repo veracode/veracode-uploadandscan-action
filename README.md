@@ -37,6 +37,6 @@ uses: actions/hello-world-docker-action@master
     createprofile: 'true'
     filepath: '**.jar'
     version: 'My scan name 1'
-    vid: 'my vid '
-    vkey: 'My vkey invalid'
+    vid: ${{ secrets.VERACODE_ID }}
+    vkey: ${{ secrets.VERACODE_KEY }}
 ```
