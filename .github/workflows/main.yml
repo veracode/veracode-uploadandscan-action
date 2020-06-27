@@ -31,9 +31,7 @@ jobs:
       uses: ./ # Uses an action in the root directory
       id: upload_and_scan
       with:
-        appname: 'my App'
         createprofile: true
         filepath: 'binaries_to_upload/'
-        version: 'Version 1'
         vid: ${{ secrets.VERACODE_ID }}
         vkey: ${{ secrets.VERACODE_KEY }}
