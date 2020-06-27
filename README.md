@@ -25,8 +25,11 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 ## Example usage
 
 The following example will upload all files contained within the folder_to_upload to Veracode and start a static scan.
+
 If the application does not exist it will be created.
+
 The scan name is defined by 'version'
+
 The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS IN THE REPOSITORY.
 
 ```yaml
