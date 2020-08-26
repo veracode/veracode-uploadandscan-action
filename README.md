@@ -1,4 +1,4 @@
-# Veracode Community-Built Upload And Scan Action
+# Veracode Upload And Scan Action
 
 This action runs the Veracode Java Wrapper's 'upload and scan' action.
 
