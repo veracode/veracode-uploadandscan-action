@@ -12,8 +12,14 @@ echo "createprofile: $createprofile"
 echo "filepath: $filepath"
 echo "version: $version"
 
-curl https://tools.veracode.com/integrations/API-Wrappers/Java/bin/VeracodeJavaAPI.zip -o VeracodeJavaAPI.zip
-unzip VeracodeJavaAPI.zip VeracodeJavaAPI.jar
+#below pulls latest wrapper version. alternative is to pin a version like so:
+#javawrapperversion=20.8.7.1
+
+javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
+
+echo "javawrapperversion: $javawrapperversion"
+
+curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
 java -jar VeracodeJavaAPI.jar \
      -action UploadAndScan \
      -appname "$appname" \
