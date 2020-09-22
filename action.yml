@@ -22,6 +22,9 @@ inputs:
   vkey:  # id of input
     description: 'vkey'
     required: true
+  sandboxname:  # id of input
+    description: 'sandboxname'
+    required: true
 # outputs:
 #   time: # id of output
 #     description: 'The time we greeted you'
@@ -35,3 +38,4 @@ runs:
     - ${{ inputs.version }}
     - ${{ inputs.vid }}
     - ${{ inputs.vkey }}
+    - ${{ inputs.sandboxname }}
