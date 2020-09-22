@@ -34,3 +34,4 @@ jobs:
         filepath: 'binaries_to_upload/'
         vid: '${{ secrets.VERACODE_ID }}'
         vkey: '${{ secrets.VERACODE_KEY }}'
+        sandboxname: 'DH-Veracode-Scan-And-Upload'
