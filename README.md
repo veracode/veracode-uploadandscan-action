@@ -28,6 +28,9 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 ### `vkey`
 **Required:** Veracode API key.
 
+### `sandboxname`
+**Required:** The name of the sandbox that you would like to send the scan.
+
 ## Example usage
 
 The following example will upload all files contained within the folder_to_upload to Veracode and start a static scan.
@@ -46,4 +49,5 @@ The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS 
     filepath: 'folder_to_upload/'
     vid: '${{ secrets.VERACODE_ID }}'
     vkey: '${{ secrets.VERACODE_KEY }}'
+    sandboxname: sandbox_to_send_scan
 ```
