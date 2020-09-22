@@ -6,6 +6,7 @@ filepath=$3
 version=$4
 vid=$5
 vkey=$6
+sandboxname=$7
 
 echo "appname: $appname"
 echo "createprofile: $createprofile"
@@ -28,4 +29,5 @@ java -jar VeracodeJavaAPI.jar \
      -version "$version" \
      -vid "$vid" \
      -vkey "$vkey" \
+     -sandboxname "$sandboxname" \
      -autoscan true
