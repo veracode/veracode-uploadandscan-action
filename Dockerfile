@@ -1,5 +1,6 @@
 # Container image that runs your code
-FROM openjdk:8-jre-alpine
+## srcclr agent doesn't support alpine
+FROM openjdk:8
     
 RUN apk --no-cache add curl
 
