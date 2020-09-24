@@ -35,5 +35,6 @@ jobs:
         vid: '${{ secrets.VERACODE_ID }}'
         vkey: '${{ secrets.VERACODE_KEY }}'
         appname: '${{ secrets.VERACODE_APPNAME }}'
+        sandboxname: 'DH-Veracode-Scan-And-Upload'
         srcclr: true
         srcclrtoken: '${{ secrets.SRCCLR_API_TOKEN }}'
