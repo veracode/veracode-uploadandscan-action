@@ -25,6 +25,10 @@ inputs:
   sandboxname:  # id of input
     description: 'sandboxname'
     required: true
+  srcclr:  # id of input
+    description: 'enable srcclr scans'
+    required: false
+    default: false
 # outputs:
 #   time: # id of output
 #     description: 'The time we greeted you'
@@ -39,3 +43,4 @@ runs:
     - ${{ inputs.vid }}
     - ${{ inputs.vkey }}
     - ${{ inputs.sandboxname }}
+    - ${{ inputs.srcclr }}

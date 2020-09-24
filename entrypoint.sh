@@ -7,6 +7,7 @@ version=$4
 vid=$5
 vkey=$6
 sandboxname=$7
+srcclr=$8
 
 echo "appname: $appname"
 echo "createprofile: $createprofile"
@@ -31,3 +32,8 @@ java -jar VeracodeJavaAPI.jar \
      -vkey "$vkey" \
      -sandboxname "$sandboxname" \
      -autoscan true
+
+if $srcclr
+then
+     curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan
+fi
