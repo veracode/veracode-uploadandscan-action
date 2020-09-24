@@ -29,17 +29,17 @@ echo "javawrapperversion: $javawrapperversion"
 veracodejavaapicmd='java -jar VeracodeJavaAPI.jar -action UploadAndScan -autoscan true'
 
 # if $var exists then add flag & value
-[ ! -z "$appname" ] && veracodejavaapicmd+=' -appname "$appname"' || echo "Empty"
-[ ! -z "$createprofile" ] && veracodejavaapicmd+=' -createprofile "$createprofile"' || echo "Empty"
-[ ! -z "$filepath" ] && veracodejavaapicmd+=' -filepath "$filepath"' || echo "Empty"
-[ ! -z "$version" ] && veracodejavaapicmd+=' -version "$version"' || echo "Empty"
-[ ! -z "$vid" ] && veracodejavaapicmd+=' -vid "$vid"' || echo "Empty"
-[ ! -z "$vkey" ] && veracodejavaapicmd+=' -vkey "$vkey"' || echo "Empty"
-[ ! -z "$appname" ] && veracodejavaapicmd+=' -sandboxname "$sandboxname"' || echo "Empty"
+[ ! -z "$appname" ] && veracodejavaapicmd+=' -appname "$appname"'
+[ ! -z "$createprofile" ] && veracodejavaapicmd+=' -createprofile "$createprofile"'
+[ ! -z "$filepath" ] && veracodejavaapicmd+=' -filepath "$filepath"'
+[ ! -z "$version" ] && veracodejavaapicmd+=' -version "$version"'
+[ ! -z "$vid" ] && veracodejavaapicmd+=' -vid "$vid"'
+[ ! -z "$vkey" ] && veracodejavaapicmd+=' -vkey "$vkey"'
+[ ! -z "$appname" ] && veracodejavaapicmd+=' -sandboxname "$sandboxname"'
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
 
-eval $veracodejavaapicmd
+eval "$veracodejavaapicmd"
 
 if $srcclr
 then
