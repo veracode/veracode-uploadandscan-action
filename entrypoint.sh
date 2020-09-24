@@ -9,6 +9,8 @@ vkey=$6
 sandboxname=$7
 srcclr=$8
 
+export SRCCLR_API_TOKEN=$9
+
 echo "appname: $appname"
 echo "createprofile: $createprofile"
 echo "filepath: $filepath"
