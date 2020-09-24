@@ -25,8 +25,8 @@ javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/w
 echo "javawrapperversion: $javawrapperversion"
 
 # Building jar execution command
-
-veracodejavaapicmd='/bin/java -jar VeracodeJavaAPI.jar -action UploadAndScan -autoscan true'
+ls /bin
+veracodejavaapicmd='/usr/local/openjdk-8/bin -jar VeracodeJavaAPI.jar -action UploadAndScan -autoscan true'
 
 # if $var exists then add flag & value
 [ ! -z "$appname" ] && veracodejavaapicmd+=' -appname "$appname"'
