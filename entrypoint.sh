@@ -37,5 +37,6 @@ java -jar VeracodeJavaAPI.jar \
 
 if $srcclr
 then
+     ls -R
      curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan
 fi
