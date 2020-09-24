@@ -37,6 +37,6 @@ java -jar VeracodeJavaAPI.jar \
 
 if $srcclr
 then
-     ls -R
+     apt-get install -y python3 python3-pip
      curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan
 fi
