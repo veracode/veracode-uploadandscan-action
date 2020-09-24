@@ -1,7 +1,6 @@
 # Container image that runs your code
-FROM openjdk:8-jre-alpine
-    
-RUN apk --no-cache add curl
+## srcclr agent doesn't support alpine
+FROM openjdk:8
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh

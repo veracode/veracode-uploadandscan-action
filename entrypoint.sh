@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash -l
 
 appname=$1
 createprofile=$2
@@ -7,8 +7,12 @@ version=$4
 vid=$5
 vkey=$6
 sandboxname=$7
+srcclr=$8
+
+export SRCCLR_API_TOKEN=$9
 
 echo "appname: $appname"
+echo "sandboxname: $sandboxname"
 echo "createprofile: $createprofile"
 echo "filepath: $filepath"
 echo "version: $version"
@@ -20,14 +24,28 @@ javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/w
 
 echo "javawrapperversion: $javawrapperversion"
 
+# Building jar execution command
+veracodejavaapicmd='/usr/local/openjdk-8/bin/java -jar VeracodeJavaAPI.jar -action UploadAndScan -autoscan true'
+
+# if $var is set: add flag & value
+[ ! -z "$appname" ] && veracodejavaapicmd+=' -appname "$appname"'
+[ ! -z "$createprofile" ] && veracodejavaapicmd+=' -createprofile "$createprofile"'
+[ ! -z "$filepath" ] && veracodejavaapicmd+=' -filepath "$filepath"'
+[ ! -z "$version" ] && veracodejavaapicmd+=' -version "$version"'
+[ ! -z "$vid" ] && veracodejavaapicmd+=' -vid "$vid"'
+[ ! -z "$vkey" ] && veracodejavaapicmd+=' -vkey "$vkey"'
+[ ! -z "$sandboxname" ] && veracodejavaapicmd+=' -sandboxname "$sandboxname"'
+
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
-java -jar VeracodeJavaAPI.jar \
-     -action UploadAndScan \
-     -appname "$appname" \
-     -createprofile "$createprofile" \
-     -filepath "$filepath" \
-     -version "$version" \
-     -vid "$vid" \
-     -vkey "$vkey" \
-     -sandboxname "$sandboxname" \
-     -autoscan true
+
+# Execute the command
+eval $veracodejavaapicmd
+
+if $srcclr
+then
+     apt-get update -y
+     apt-get install -y python3 python3-pip
+     update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+     pip install --upgrade pip
+     curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan
+fi

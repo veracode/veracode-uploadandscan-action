@@ -29,7 +29,14 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 **Required:** Veracode API key.
 
 ### `sandboxname`
-**Required:** The name of the sandbox that you would like to send the scan.
+**Optional:** If you would rather send your scan to a sandbox.
+
+### `srcclr`
+**Optional:** Enable scanning this project with the srcclr agent. Currently only validated support for python
+**Default:** false
+
+### `srcclrtoken`
+**Optional:** Token for access to srcclr. Only used when `srcclr = true`.
 
 ## Example usage
 
@@ -49,5 +56,7 @@ The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS 
     filepath: 'folder_to_upload/'
     vid: '${{ secrets.VERACODE_ID }}'
     vkey: '${{ secrets.VERACODE_KEY }}'
+    srcclrtoken: '${{ secrets.SRCCLR_API_TOKEN }}'
     sandboxname: sandbox_to_send_scan
+    srcclr: true
 ```
