@@ -37,3 +37,4 @@ jobs:
         appname: '${{ secrets.VERACODE_APPNAME }}'
         sandboxname: 'DH-Veracode-Scan-And-Upload'
         srcclr: true
+        srcclrtoken: ${{ secrets.SRCCLR_API_TOKEN }}'
