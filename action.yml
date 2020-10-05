@@ -15,7 +15,7 @@ inputs:
   version:  # id of input
     description: 'version'
     required: true
-    default: "Scan from Github job: ${{ github.run_id }}"
+    default: '"Scan from Github job: ${{ github.run_id }}"'
   vid:  # id of input
     description: 'vid'
     required: true
