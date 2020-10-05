@@ -32,7 +32,7 @@ jobs:
       id: upload_and_scan
       with:
         appname: "Verademo"
-        version:  
+        version: "this is a spca test"
         filepath: "binaries_to_upload/*.jar"
         vid: '${{ secrets.VERACODE_ID }}'
         vkey: '${{ secrets.VERACODE_KEY }}'
