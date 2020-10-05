@@ -31,6 +31,11 @@ jobs:
       uses: ./ # Uses an action in the root directory
       id: upload_and_scan
       with:
+        appname: Verademo 
         filepath: 'binaries_to_upload/'
         vid: '${{ secrets.VERACODE_ID }}'
         vkey: '${{ secrets.VERACODE_KEY }}'
+        createsandbox: true
+        sandboxname: 'GITHUB_REPOSITORY - $GITHUB_REF - GITHUB_RUN_NUMBER'
+        scantimeout: 15
+        criticality: 'Very High'
