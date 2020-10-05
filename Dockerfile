@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM openjdk:8-jre-alpine
+FROM openjdk:latest
     
 RUN apk --no-cache add curl
 
