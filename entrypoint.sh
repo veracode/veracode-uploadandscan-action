@@ -58,17 +58,17 @@ fi
 
 if [ "$exclude" ]
 then
-    wrapper_optional=$wrapper_optional"-exclude=$exclude "
+    wrapper_optional=$wrapper_optional"-exclude="$exclude" "
 fi
 
 if [ "$include" ]
 then
-    wrapper_optional=$wrapper_optional"-include=$include "
+    wrapper_optional=$wrapper_optional"-include="$include" "
 fi
 
 if [ "$criticality" ]
 then
-    wrapper_optional=$wrapper_optional"-criticality=$criticality "
+    wrapper_optional=$wrapper_optional"-criticality="$criticality" "
 fi
 
 #required wrapper command
