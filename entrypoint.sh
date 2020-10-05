@@ -48,7 +48,7 @@ fi
 
 if [ "$sandboxname" ]
 then
-    wrapper_optional=$wrapper_optional'-sandboxname="'$sandboxname'" '
+    wrapper_optional=$wrapper_optional"-sandboxname=$sandboxname "
 fi
 
 if [ "$scantimeout" ]
@@ -72,7 +72,7 @@ then
 fi
 
 #required wrapper command
-wrapper_required='-action UploadAndScan -appname "'$appname'" -createprofile '$createprofile' -filepath '$filepath' -version "'$version'" -vid '$vid' -vkey '$vkey' -autoscan true '
+wrapper_required="-action UploadAndScan -appname $appname -createprofile $createprofile -filepath $filepath -version $version -vid $vid -vkey $vkey -autoscan true "
 
 
 #Debug
@@ -93,4 +93,4 @@ javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/w
 echo "javawrapperversion: $javawrapperversion"
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
-echo $(java -jar VeracodeJavaAPI.jar $wrapper_required $wrapper_optional)
+java -jar VeracodeJavaAPI.jar $wrapper_required $wrapper_optional
