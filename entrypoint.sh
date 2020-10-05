@@ -74,6 +74,7 @@ fi
 #required wrapper command
 wrapper_required="-action UploadAndScan -appname \"$appname\" -createprofile $createprofile -filepath $filepath -version \"$version\" -vid $vid -vkey $vkey -autoscan true "
 
+
 #Debug
 echo "wrapper required: $wrapper_required"
 echo ""
