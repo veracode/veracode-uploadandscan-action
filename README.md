@@ -28,6 +28,27 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 ### `vkey`
 **Required:** Veracode API key.
 
+## Optional Inputs
+
+### createsandbox
+***Optional*** Set 'true' if the sandbox should be created on the Veracode platform
+
+### sandboxname
+***Optional*** The sandboxname inside the application profile name
+
+### scantimeout
+***Optional*** Number of minutes how long the action is waiting for the scan to complete. Use this to introduce break build functionality
+
+### exclude
+***Optional*** Exclude modules from modules selection / scanning
+
+### include
+***Optional*** Include modules in modules selection / scanning
+
+### criticality
+***Optional*** Set the business criticality, autoamtically choosing the corresponding policy to rate findings
+
+
 ## Example usage
 
 The following example will upload all files contained within the folder_to_upload to Veracode and start a static scan.
