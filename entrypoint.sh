@@ -91,7 +91,7 @@ ls -la
 
 javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
 
-#echo "javawrapperversion: $javawrapperversion"
+echo "javawrapperversion: $javawrapperversion"
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
 java -jar VeracodeJavaAPI.jar $wrapper_required $wrapper_optional
