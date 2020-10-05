@@ -68,7 +68,7 @@ fi
 
 if [ "$criticality" ]
 then
-    wrapper_optional=$wrapper_optional"-criticality=\"$criticality\" "
+    wrapper_optional=$wrapper_optional"-criticality=$criticality "
 fi
 
 #required wrapper command
