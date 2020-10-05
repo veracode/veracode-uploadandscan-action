@@ -48,7 +48,7 @@ fi
 
 if [ "$sandboxname" ]
 then
-    wrapper_optional=$wrapper_optional"-sandboxname=\"$sandboxname\" "
+    wrapper_optional=$wrapper_optional"-sandboxname=$sandboxname "
 fi
 
 if [ "$scantimeout" ]
@@ -58,12 +58,12 @@ fi
 
 if [ "$exclude" ]
 then
-    wrapper_optional=$wrapper_optional"-exclude=\"$exclude\" "
+    wrapper_optional=$wrapper_optional"-exclude=$exclude "
 fi
 
 if [ "$include" ]
 then
-    wrapper_optional=$wrapper_optional"-include=\"$include\" "
+    wrapper_optional=$wrapper_optional"-include=$include "
 fi
 
 if [ "$criticality" ]
