@@ -31,13 +31,14 @@ jobs:
       uses: ./ # Uses an action in the root directory
       id: upload_and_scan
       with:
-        appname: Verademo 
-        filepath: 'binaries_to_upload/*.jar'
+        appname: "Verademo"
+        version:  
+        filepath: "binaries_to_upload/*.jar"
         vid: '${{ secrets.VERACODE_ID }}'
         vkey: '${{ secrets.VERACODE_KEY }}'
         createsandbox: true
 
-        sandboxname: ${{ github.run_id }}
+        sandboxname: "${{ github.run_id }}"
 
         scantimeout: 15
-        criticality: 'VeryHigh'
+        criticality: "VeryHigh"
