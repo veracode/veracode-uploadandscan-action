@@ -30,22 +30,22 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 
 ## Optional Inputs
 
-### createsandbox
+### `createsandbox`
 ***Optional*** Set 'true' if the sandbox should be created on the Veracode platform
 
-### sandboxname
+### `sandboxname`
 ***Optional*** The sandboxname inside the application profile name
 
-### scantimeout
+### `scantimeout`
 ***Optional*** Number of minutes how long the action is waiting for the scan to complete. Use this to introduce break build functionality
 
-### exclude
+### `exclude`
 ***Optional*** Exclude modules from modules selection / scanning
 
-### include
+### `include`
 ***Optional*** Include modules in modules selection / scanning
 
-### criticality
+### `criticality`
 ***Optional*** Set the business criticality, autoamtically choosing the corresponding policy to rate findings
 
 
