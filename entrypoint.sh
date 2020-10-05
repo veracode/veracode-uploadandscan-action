@@ -21,7 +21,7 @@ criticality=${12}
 
 echo "Required Information"
 echo "===================="
-echo "appname: $appname"
+echo "appname: \"$appname\""
 echo "createprofile: $createprofile"
 echo "filepath: $filepath"
 echo "version: $version"
