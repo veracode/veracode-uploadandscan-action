@@ -48,7 +48,7 @@ fi
 
 if [ "$sandboxname" ]
 then
-    wrapper_optional=$wrapper_optional"-sandboxname=\"$sandboxname\” "
+    wrapper_optional=$wrapper_optional"-sandboxname="$sandboxname" "
 fi
 
 if [ "$scantimeout" ]
@@ -58,21 +58,21 @@ fi
 
 if [ "$exclude" ]
 then
-    wrapper_optional=$wrapper_optional"-exclude=$exclude "
+    wrapper_optional=$wrapper_optional"-exclude="$exclude" "
 fi
 
 if [ "$include" ]
 then
-    wrapper_optional=$wrapper_optional"-include=$include "
+    wrapper_optional=$wrapper_optional"-include="$include" "
 fi
 
 if [ "$criticality" ]
 then
-    wrapper_optional=$wrapper_optional"-criticality=$criticality "
+    wrapper_optional=$wrapper_optional"-criticality="$criticality" "
 fi
 
 #required wrapper command
-wrapper_required="-action UploadAndScan -appname \"$appname\" -createprofile $createprofile -filepath $filepath -version \"$version\" -vid $vid -vkey $vkey -autoscan true "
+wrapper_required="-action UploadAndScan -appname "$appname" -createprofile $createprofile -filepath $filepath -version "$version" -vid $vid -vkey $vkey -autoscan true "
 
 
 #Debug
