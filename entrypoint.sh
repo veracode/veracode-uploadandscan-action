@@ -80,6 +80,8 @@ echo ""
 echo "wrapper optional: $wrapper_optional"
 echo ""
 echo "full wrapper command: $wrapper_required$wrapper_optional"
+echo ""
+ls -la
 
 
 #below pulls latest wrapper version. alternative is to pin a version like so:
