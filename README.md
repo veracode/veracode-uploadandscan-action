@@ -70,7 +70,7 @@ The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS 
     createsandbox: 'true'
     sandboxname: 'SANDBOXNAME'
     scantimeout: 15
-    exclude: '*.spec.js'
+    exclude: '*.js'
     include: '*.war'
     criticality: 'Very High'
 ```
