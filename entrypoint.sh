@@ -72,7 +72,7 @@ then
 fi
 
 #required wrapper command
-wrapper_required="-action UploadAndScan -appname $appname -createprofile $createprofile -filepath $filepath -version "$version" -vid $vid -vkey $vkey -autoscan true "
+wrapper_required="-action UploadAndScan -appname $appname -createprofile $createprofile -filepath $filepath -version $version -vid $vid -vkey $vkey -autoscan true "
 
 
 #Debug
