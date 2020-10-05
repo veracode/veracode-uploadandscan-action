@@ -37,7 +37,7 @@ jobs:
         vkey: '${{ secrets.VERACODE_KEY }}'
         createsandbox: true
 
-        sandboxname: ${{ github.repository}} - ${{ github.ref}} - ${{ github.run_id }}
+        sandboxname: ${{ github.run_id }}
 
         scantimeout: 15
         criticality: 'VeryHigh'
