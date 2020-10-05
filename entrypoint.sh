@@ -68,11 +68,11 @@ fi
 
 if [ "$criticality" ]
 then
-    wrapper_optional=$wrapper_optional'-criticality="'$criticality'" '
+    wrapper_optional=$wrapper_optional'-criticality='$criticality' '
 fi
 
 #required wrapper command
-wrapper_required='-action UploadAndScan -appname "'$appname'" -createprofile '$createprofile' -filepath "'$filepath'" -version "'$version'" -vid '$vid' -vkey '$vkey' -autoscan true '
+wrapper_required='-action UploadAndScan -appname "'$appname'" -createprofile '$createprofile' -filepath '$filepath' -version "'$version'" -vid '$vid' -vkey '$vkey' -autoscan true '
 
 
 #Debug
