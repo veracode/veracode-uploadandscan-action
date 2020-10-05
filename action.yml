@@ -22,6 +22,24 @@ inputs:
   vkey:  # id of input
     description: 'vkey'
     required: true
+  createsandbox: 
+    description: 'true or flase'
+    required: false
+  sandboxname:
+    description: 'name of the sandbox'
+    required: false
+  scantimeout:
+    description: 'wait X minutes for the scan to complete'
+    required: false
+  exclude:
+    description: 'modules to exclude from module selection'
+    required: false
+  include:
+    description: 'modules to include in module selection'
+    required: false
+  criticality:
+    description: 'business criticality - policy selection'
+    required: false
 # outputs:
 #   time: # id of output
 #     description: 'The time we greeted you'
@@ -35,3 +53,9 @@ runs:
     - ${{ inputs.version }}
     - ${{ inputs.vid }}
     - ${{ inputs.vkey }}
+    - ${{ inputs.createsandbox}}
+    - ${{ inputs.sandboxname }}
+    - ${{ inputs.scantimeout }}
+    - ${{ inputs.exclude }}
+    - ${{ inputs.include }}
+    - ${{ inputs.criticality}}
