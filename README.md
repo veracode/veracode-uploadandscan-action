@@ -67,4 +67,10 @@ The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS 
     filepath: 'folder_to_upload/'
     vid: '${{ secrets.VERACODE_ID }}'
     vkey: '${{ secrets.VERACODE_KEY }}'
+    createsandbox: 'true'
+    sandboxname: 'SANDBOXNAME'
+    scantimeout: 15
+    exclude: '*.spec.js'
+    include: '*.war'
+    criticality: 'Very High'
 ```
