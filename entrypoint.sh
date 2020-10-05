@@ -48,7 +48,7 @@ fi
 
 if [ "$sandboxname" ]
 then
-    wrapper_optional=$wrapper_optional"-sandboxname=$sandboxname "
+    wrapper_optional=$wrapper_optional"-sandboxname=\"$sandboxname\” "
 fi
 
 if [ "$scantimeout" ]
@@ -72,7 +72,7 @@ then
 fi
 
 #required wrapper command
-wrapper_required="-action UploadAndScan -appname $appname -createprofile $createprofile -filepath $filepath -version $version -vid $vid -vkey $vkey -autoscan true "
+wrapper_required="-action UploadAndScan -appname \"$appname\" -createprofile $createprofile -filepath $filepath -version \"$version\" -vid $vid -vkey $vkey -autoscan true "
 
 
 #Debug
