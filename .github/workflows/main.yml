@@ -32,7 +32,7 @@ jobs:
       id: upload_and_scan
       with:
         appname: Verademo 
-        filepath: '/binaries_to_upload/*.jar'
+        filepath: 'binaries_to_upload/*.jar'
         vid: '${{ secrets.VERACODE_ID }}'
         vkey: '${{ secrets.VERACODE_KEY }}'
         createsandbox: true
