@@ -40,6 +40,33 @@ inputs:
   criticality:
     description: 'business criticality - policy selection'
     required: false
+  pattern:
+    description: 'filename pattern'
+    required: false
+  replacement:
+    description: 'replacement'
+    required: false
+  sandboxid:
+    description: 'replacement'
+    required: false
+  scanallnonfataltoplevelmodules:
+    description: 'All top level modules'
+    required: false
+  selected:
+    description: 'platform selected modules'
+    required: false
+  selectedpreviously:
+    description: 'selected modules like from previous scan'
+    required: false
+  teams:
+    description: 'teams'
+    required: false
+  toplevel:
+    description: 'teams'
+    required: false
+  
+    
+ 
 # outputs:
 #   time: # id of output
 #     description: 'The time we greeted you'
@@ -58,4 +85,12 @@ runs:
     - ${{ inputs.scantimeout }}
     - ${{ inputs.exclude }}
     - ${{ inputs.include }}
-    - ${{ inputs.criticality}}
+    - ${{ inputs.criticality }}
+    - ${{ inputs.pattern }}
+    - ${{ inputs.replacement }}
+    - ${{ inputs.sandboxid }}
+    - ${{ inputs.scanallnonfataltoplevelmodules }}
+    - ${{ inputs.selected }}
+    - ${{ inputs.selectedpreviously }}
+    - ${{ inputs.teams }}
+    - ${{ inputs.toplevel }}
