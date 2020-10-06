@@ -38,16 +38,14 @@ echo "version: $version"
 if [ "$vid" ]
 then
 echo "vid: ***"
-elif
-then
+else
 echo "vid:"
 fi
 
 if [ "$vkey" ]
 then
 echo "vkey: ***"
-elif
-then
+else
 echo "vkey:"
 fi
 echo ""
