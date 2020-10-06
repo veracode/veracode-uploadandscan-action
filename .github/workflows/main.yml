@@ -39,6 +39,7 @@ jobs:
         createsandbox: true
 
         sandboxname: '${{ github.run_id }}'
+        sandboxid: 123456
 
         scantimeout: 15
         criticality: 'VeryHigh'
