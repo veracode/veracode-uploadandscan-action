@@ -32,14 +32,11 @@ jobs:
       id: upload_and_scan
       with:
         appname: 'Verademo New'
-        version: 'this is a spca test'
+        version: '${{ github.run_id }}'
         filepath: 'binaries_to_upload/*.jar'
         vid: '${{ secrets.VERACODE_ID }}'
         vkey: '${{ secrets.VERACODE_KEY }}'
         createsandbox: true
-
-        sandboxname: '${{ github.run_id }}'
-        sandboxid: 123456
-
+        sandboxname: 'Github $GITHUB_HEAD_REF'
         scantimeout: 15
         criticality: 'VeryHigh'
