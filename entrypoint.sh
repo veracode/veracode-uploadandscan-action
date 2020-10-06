@@ -16,6 +16,16 @@ exclude=${10}
 include=${11}
 criticality=${12}
 
+pattern=${13}
+replacement=${14}
+sandboxid=${15}
+scanallnonfataltoplevelmodules=${16}
+selected=${17}
+selectedpreviously=${18}
+teams=${19}
+toplevel=${20}
+
+
 
 
 
@@ -34,6 +44,14 @@ echo "scantimeout: $9"
 echo "exclude: ${10}"
 echo "include: ${11}"
 echo "criticality: ${12}"
+echo "pattern: ${13}"
+echo "replacement: ${14}"
+echo "sandboxid: ${15}"
+echo "scanallnonfataltoplevelmodules: ${16}"
+echo "selected: ${17}"
+echo "selectedpreviously: ${18}"
+echo "teams: ${19}"
+echo "toplevel: ${20}"
 
 
 #required wrapper command
@@ -84,8 +102,51 @@ fi
 
 if [ "$criticality" ]
 then
-    echo "        -criticality=\"$criticality\" \\" >> runJava.sh
+    echo "        -criticality \"$criticality\" \\" >> runJava.sh
 fi
+
+if [ "$pattern" ]
+then
+    echo "        -pattern \"$pattern\" \\" >> runJava.sh
+fi
+
+if [ "$replacement" ]
+then
+    echo "        -replacement \"$replacement\" \\" >> runJava.sh
+fi
+
+if [ "$sandboxid" ]
+then
+    echo "        -sandboxid \"$sandboxid\" \\" >> runJava.sh
+fi
+
+if [ "$scanallnonfataltoplevelmodules" ]
+then
+    echo "        -scanallnonfataltoplevelmodules \"$scanallnonfataltoplevelmodules\" \\" >> runJava.sh
+fi
+
+if [ "$selected" ]
+then
+    echo "        -selected \"$selected\" \\" >> runJava.sh
+fi
+
+if [ "$selectedpreviously" ]
+then
+    echo "        -selectedpreviously \"$selectedpreviously\" \\" >> runJava.sh
+fi
+
+if [ "$teams" ]
+then
+    echo "        -teams \"$teams\" \\" >> runJava.sh
+fi
+
+if [ "$toplevel" ]
+then
+    echo "        -toplevel \"$toplevel\" \\" >> runJava.sh
+fi
+
+
+
 
 echo "        -createprofile \"$createprofile\"" >> runJava.sh
 
