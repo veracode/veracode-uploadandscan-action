@@ -35,6 +35,18 @@ echo "appname: $appname"
 echo "createprofile: $createprofile"
 echo "filepath: $filepath"
 echo "version: $version"
+if [ $vid ]
+then
+echo "vid: ***"
+elif
+echo "vid:"
+fi
+if [ $vkey ]
+then
+echo "vkey: ***"
+elif
+echo "vkey:"
+fi
 echo ""
 echo "Optional Information"
 echo "===================="
@@ -52,6 +64,16 @@ echo "selected: ${17}"
 echo "selectedpreviously: ${18}"
 echo "teams: ${19}"
 echo "toplevel: ${20}"
+
+
+#Input validation checks
+
+if [ -z $appname ] || [ -z $createprofile ] || [ -z $filepath ] || [ -z $version ] || [ -z $vid ] || [ -z $vkey ]
+then
+        echo "Missing required parameter. Please check that all required parameters are set"
+        exit 1
+fi
+
 
 
 #required wrapper command
@@ -117,7 +139,13 @@ fi
 
 if [ "$sandboxid" ]
 then
-    echo "        -sandboxid \"$sandboxid\" \\" >> runJava.sh
+        if [ "$sandboxname" ]
+        then
+                echo "ERROR: sandboxid cannot got together with sandboxname"
+                exit 1
+        elif
+                echo "        -sandboxid \"$sandboxid\" \\" >> runJava.sh
+        fi
 fi
 
 if [ "$scanallnonfataltoplevelmodules" ]
