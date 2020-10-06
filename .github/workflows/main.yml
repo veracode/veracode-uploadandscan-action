@@ -37,6 +37,6 @@ jobs:
         vid: '${{ secrets.VERACODE_ID }}'
         vkey: '${{ secrets.VERACODE_KEY }}'
         createsandbox: true
-        sandboxname: 'Github $GITHUB_HEAD_REF'
+        sandboxname: 'Github ${{ github.base_ref }}'
         scantimeout: 15
         criticality: 'VeryHigh'
