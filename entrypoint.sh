@@ -35,13 +35,14 @@ echo "appname: $appname"
 echo "createprofile: $createprofile"
 echo "filepath: $filepath"
 echo "version: $version"
-if [ $vid ]
+if [ "$vid" ]
 then
 echo "vid: ***"
 elif
 echo "vid:"
 fi
-if [ $vkey ]
+
+if [ "$vkey" ]
 then
 echo "vkey: ***"
 elif
@@ -68,7 +69,7 @@ echo "toplevel: ${20}"
 
 #Input validation checks
 
-if [ -z $appname ] || [ -z $createprofile ] || [ -z $filepath ] || [ -z $version ] || [ -z $vid ] || [ -z $vkey ]
+if [ -z "$appname" ] || [ -z "$createprofile" ] || [ -z "$filepath" ] || [ -z "$version" ] || [ -z "$vid" ] || [ -z "$vkey" ]
 then
         echo "Missing required parameter. Please check that all required parameters are set"
         exit 1
