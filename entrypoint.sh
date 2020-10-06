@@ -29,58 +29,66 @@ echo ""
 echo "Optional Information"
 echo "===================="
 echo "createsandbox: $createsandbox"
-echo "sandboxname: $sandboxname"
-echo "scantimeout: $scantimeout"
-echo "exclude: $exclude"
-echo "include: $include"
-echo "criticality: $criticality"
+echo "sandboxname: $8"
+echo "scantimeout: $9"
+echo "exclude: ${10}"
+echo "include: ${11}"
+echo "criticality: ${12}"
+
+
+#required wrapper command
+echo "#!/bin/sh -l" > runJava.sh
+echo ""
+echo "java -jar VeracodeJavaAPI.jar \\
+        -filepath $filepath \\
+        -version \"$version\" \\
+        -action \"uploadandscan\" \\
+        -appname \"$appname\" \\
+        -vid \"$vid\" \\
+        -vkey \"$vkey\" \\" >> runJava.sh
 
 #create additioanl commands on optional input
-wrapper_optional=""
 
 if [ "$createsandbox" == true ]
 then
-    wrapper_optional=$wrapper_optional"-createsandbox=true "
+    echo "        -createsandbox=\"true\" \\" >> runJava.sh
 elif [ "$createsandbox" == false ]
 then
-    wrapper_optional=$wrapper_optional"-createsandbox=false "
+    echo "        -createsandbox=\"false\" \\" >> runJava.sh
 fi
 
 if [ "$sandboxname" ]
 then
-    wrapper_optional=$wrapper_optional"-sandboxname=\""${sandboxname}"\" "
+   echo "        -sandboxname \"$sandboxname\" \\" >> runJava.sh
 fi
 
 if [ "$scantimeout" ]
 then
-    wrapper_optional=$wrapper_optional"-scantimeout=$scantimeout "
+   echo "        -scantimeout \"$scantimeout\" \\" >> runJava.sh
 fi
 
 if [ "$exclude" ]
 then
-    wrapper_optional=$wrapper_optional'-exclude="'$exclude'" '
+    echo "        -exclude \"$exclude\" \\" >> runJava.sh
 fi
 
 if [ "$include" ]
 then
-    wrapper_optional=$wrapper_optional'-include="'$include'" '
+    echo "        -include \"$include\" \\" >> runJava.sh
+fi
+
+if [ -z "$include" ] && [ -z "$exclude" ]
+then
+    echo "        -autoscan \"true\" \\" >> runJava.sh
 fi
 
 if [ "$criticality" ]
 then
-    wrapper_optional=$wrapper_optional'-criticality='$criticality' '
+    echo "        -criticality=\"$criticality\" \\" >> runJava.sh
 fi
 
-#required wrapper command
-wrapper_required="-action UploadAndScan -appname \"${appname}\" -createprofile $createprofile -filepath $filepath -version \""${version}"\" -vid $vid -vkey $vkey -autoscan true "
+echo "        -createprofile \"$createprofile\"" >> runJava.sh
 
-
-#Debug
-echo "wrapper required: $wrapper_required"
-echo ""
-echo "wrapper optional: $wrapper_optional"
-echo ""
-echo "full wrapper command: $wrapper_required$wrapper_optional"
 
 
 #below pulls latest wrapper version. alternative is to pin a version like so:
@@ -90,7 +98,7 @@ echo "full wrapper command: $wrapper_required$wrapper_optional"
 
 javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
 
-echo "javawrapperversion: $javawrapperversion"
+#echo "javawrapperversion: $javawrapperversion"
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
-java -jar VeracodeJavaAPI.jar $(echo $wrapper_required$wrapper_optional)
+./runJava.sh
