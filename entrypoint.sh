@@ -39,6 +39,7 @@ if [ "$vid" ]
 then
 echo "vid: ***"
 elif
+then
 echo "vid:"
 fi
 
@@ -46,6 +47,7 @@ if [ "$vkey" ]
 then
 echo "vkey: ***"
 elif
+then
 echo "vkey:"
 fi
 echo ""
