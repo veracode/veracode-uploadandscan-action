@@ -144,7 +144,7 @@ then
         then
                 echo "ERROR: sandboxid cannot got together with sandboxname"
                 exit 1
-        elif
+        else
                 echo "        -sandboxid \"$sandboxid\" \\" >> runJava.sh
         fi
 fi
