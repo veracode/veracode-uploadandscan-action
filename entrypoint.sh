@@ -216,7 +216,6 @@ if [ "$toplevel" ]
 then
         if [ "$selected" ] || [ "$selectedpreviously" ] || [ "$scanallnonfataltoplevelmodules" ] || [ "$exclude" ] || [ "$include" ]
         then
-        then
                 echo "ERROR: toplevel cannot go together with selected, selectedpreviously, scanallnonfataltoplevelmodules, exclude, include"
                 exit 1
         else
