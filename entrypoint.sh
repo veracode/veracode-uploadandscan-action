@@ -67,7 +67,7 @@ echo "teams: ${19}"
 echo "toplevel: ${20}"
 
 
-#Input validation checks
+#Check if required parameters are set
 
 if [ -z "$appname" ] || [ -z "$createprofile" ] || [ -z "$filepath" ] || [ -z "$version" ] || [ -z "$vid" ] || [ -z "$vkey" ]
 then
@@ -100,7 +100,13 @@ fi
 
 if [ "$sandboxname" ]
 then
-   echo "        -sandboxname \"$sandboxname\" \\" >> runJava.sh
+        if [ "$sandboxid" ]
+        then
+                echo "ERRRO: sandboxname cannot go together with sandboxid"
+                exit 1
+        else
+                echo "        -sandboxname \"$sandboxname\" \\" >> runJava.sh
+        fi
 fi
 
 if [ "$scantimeout" ]
@@ -110,12 +116,24 @@ fi
 
 if [ "$exclude" ]
 then
-    echo "        -exclude \"$exclude\" \\" >> runJava.sh
+        if [ "$selectedpreviously" ] || [ "$toplevel" ] || [ "$selected" ] || [ "$selectedpreviously" ]
+        then
+                echo "ERROR: exclude cannot go together with selectedpreviously, toplevel, selected, selectedpreviously"
+                exit 1
+        else
+                echo "        -exclude \"$exclude\" \\" >> runJava.sh
+        fi
 fi
 
 if [ "$include" ]
 then
-    echo "        -include \"$include\" \\" >> runJava.sh
+        if [ "$selectedpreviously" ] || [ "$toplevel" ] || [ "$selected" ] || [ "$selectedpreviously" ]
+        then
+                echo "ERROR: include cannot go together with selectedpreviously, toplevel, selected, selectedpreviously"
+                exit 1
+        else
+                echo "        -include \"$include\" \\" >> runJava.sh
+        fi
 fi
 
 if [ -z "$include" ] && [ -z "$exclude" ]
@@ -130,12 +148,25 @@ fi
 
 if [ "$pattern" ]
 then
-    echo "        -pattern \"$pattern\" \\" >> runJava.sh
+        if [ "$replacement" ]
+        then
+                echo "        -pattern \"$pattern\" \\" >> runJava.sh
+        else
+                echo "ERROR: pattern always need the replacement parameter as well"
+                exit 1
+        fi
+    
 fi
 
 if [ "$replacement" ]
 then
-    echo "        -replacement \"$replacement\" \\" >> runJava.sh
+       if [ "$pattern" ]
+        then
+                echo "        -replacement \"$replacement\" \\" >> runJava.sh
+        else
+                echo "ERROR: replacement always need the pattern parameter as well"
+                exit 1
+        fi 
 fi
 
 if [ "$sandboxid" ]
@@ -156,12 +187,24 @@ fi
 
 if [ "$selected" ]
 then
-    echo "        -selected \"$selected\" \\" >> runJava.sh
+        if [ "$selectedpreviously" ] || [ "$toplevel" ] || [ "$scanallnonfataltoplevelmodules" ] || [ "$exclude" ] || [ "$include" ]
+        then
+                echo "ERROR: selected cannot go together with selectedpreviously, toplevel, scanallnonfataltoplevelmodules, exclude, include"
+                exit 1
+        else
+                echo "        -selectedpreviously \"$selectedpreviously\" \\" >> runJava.sh
+        fi
 fi
 
 if [ "$selectedpreviously" ]
 then
-    echo "        -selectedpreviously \"$selectedpreviously\" \\" >> runJava.sh
+        if [ "$selected" ] || [ "$toplevel" ] || [ "$scanallnonfataltoplevelmodules" ] || [ "$exclude" ] || [ "$include" ]
+        then
+                echo "ERROR: selectedpreviously cannot go together with selected, toplevel, scanallnonfataltoplevelmodules, exclude, include"
+                exit 1
+        else
+                echo "        -selectedpreviously \"$selectedpreviously\" \\" >> runJava.sh
+        fi
 fi
 
 if [ "$teams" ]
@@ -171,7 +214,13 @@ fi
 
 if [ "$toplevel" ]
 then
-    echo "        -toplevel \"$toplevel\" \\" >> runJava.sh
+        if [ "$selected" ] || [ "$selectedpreviously" ] || [ "$scanallnonfataltoplevelmodules" ] || [ "$exclude" ] || [ "$include" ]
+        then
+        then
+                echo "ERROR: toplevel cannot go together with selected, selectedpreviously, scanallnonfataltoplevelmodules, exclude, include"
+                exit 1
+        else
+               echo "        -toplevel \"$toplevel\" \\" >> runJava.sh
 fi
 
 
