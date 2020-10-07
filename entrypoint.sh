@@ -220,6 +220,7 @@ then
                 exit 1
         else
                echo "        -toplevel \"$toplevel\" \\" >> runJava.sh
+        fi
 fi
 
 
