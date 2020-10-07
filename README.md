@@ -31,7 +31,7 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 ## Optional Inputs
 
 ### `createsandbox`
-**Optional** BOOLEAN -Set 'true' if the sandbox should be created on the Veracode platform
+**Optional** BOOLEAN - Set 'true' if the sandbox should be created on the Veracode platform
 
 ### `sandboxname`
 **Optional** STRING - The sandboxname inside the application profile name
@@ -96,5 +96,5 @@ The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS 
     scantimeout: 15
     exclude: '*.js'
     include: '*.war'
-    criticality: 'Very High'
+    criticality: 'VeryHigh'
 ```
