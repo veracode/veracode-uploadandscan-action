@@ -89,8 +89,8 @@ The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS 
 - uses: actions/veracode-uploadandscan-action@master # Run the uploadandscan action. Inputs are described above.
   with:
     filepath: 'folder_to_upload/'
-    vid: '${{ secrets.VERACODE_ID }}'
-    vkey: '${{ secrets.VERACODE_KEY }}'
+    vid: '${{ secrets.VERACODE_API_ID }}'
+    vkey: '${{ secrets.VERACODE_API_KEY }}'
     createsandbox: 'true'
     sandboxname: 'SANDBOXNAME'
     scantimeout: 15
