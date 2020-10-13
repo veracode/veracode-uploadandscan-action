@@ -22,6 +22,51 @@ inputs:
   vkey:  # id of input
     description: 'vkey'
     required: true
+  createsandbox: 
+    description: 'true or flase'
+    required: false
+  sandboxname:
+    description: 'name of the sandbox'
+    required: false
+  scantimeout:
+    description: 'wait X minutes for the scan to complete'
+    required: false
+  exclude:
+    description: 'modules to exclude from module selection'
+    required: false
+  include:
+    description: 'modules to include in module selection'
+    required: false
+  criticality:
+    description: 'business criticality - policy selection'
+    required: false
+  pattern:
+    description: 'filename pattern'
+    required: false
+  replacement:
+    description: 'replacement'
+    required: false
+  sandboxid:
+    description: 'replacement'
+    required: false
+  scanallnonfataltoplevelmodules:
+    description: 'All top level modules'
+    required: false
+  selected:
+    description: 'platform selected modules'
+    required: false
+  selectedpreviously:
+    description: 'selected modules like from previous scan'
+    required: false
+  teams:
+    description: 'teams'
+    required: false
+  toplevel:
+    description: 'teams'
+    required: false
+  
+    
+ 
 # outputs:
 #   time: # id of output
 #     description: 'The time we greeted you'
@@ -35,3 +80,17 @@ runs:
     - ${{ inputs.version }}
     - ${{ inputs.vid }}
     - ${{ inputs.vkey }}
+    - ${{ inputs.createsandbox}}
+    - ${{ inputs.sandboxname }}
+    - ${{ inputs.scantimeout }}
+    - ${{ inputs.exclude }}
+    - ${{ inputs.include }}
+    - ${{ inputs.criticality }}
+    - ${{ inputs.pattern }}
+    - ${{ inputs.replacement }}
+    - ${{ inputs.sandboxid }}
+    - ${{ inputs.scanallnonfataltoplevelmodules }}
+    - ${{ inputs.selected }}
+    - ${{ inputs.selectedpreviously }}
+    - ${{ inputs.teams }}
+    - ${{ inputs.toplevel }}
