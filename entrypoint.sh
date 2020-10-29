@@ -8,8 +8,9 @@ vid=$5
 vkey=$6
 sandboxname=$7
 srcclr=$8
+srcclrurl=$9
 
-export SRCCLR_API_TOKEN=$9
+export SRCCLR_API_TOKEN=$10
 
 echo "appname: $appname"
 echo "sandboxname: $sandboxname"
@@ -47,5 +48,5 @@ then
      apt-get install -y python3 python3-pip
      update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
      pip install --upgrade pip
-     curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan
+     eval 'curl -sSL ${srcclrurl} | sh -s scan'
 fi
