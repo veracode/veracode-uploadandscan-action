@@ -29,6 +29,10 @@ inputs:
     description: 'enable srcclr scans'
     required: false
     default: false
+  srcclrurl:  # id of input
+    description: 'alternate url for srcclr scans'
+    required: false
+    default: https://download.sourceclear.com/ci.sh
   srcclrtoken:  # id of input
     description: 'srcclr verification token'
     required: false
