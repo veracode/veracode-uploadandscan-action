@@ -1,5 +1,7 @@
 #!/bin/bash -l
 
+set -e
+
 appname=$1
 createprofile=$2
 filepath=$3
@@ -48,5 +50,6 @@ then
      apt-get install -y python3 python3-pip
      update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
      pip install --upgrade pip
+     echo ${srcclrurl}
      eval 'curl -sSL ${srcclrurl} | sh -s scan'
 fi
