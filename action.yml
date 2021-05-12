@@ -47,7 +47,7 @@ inputs:
     description: 'replacement'
     required: false
   sandboxid:
-    description: 'replacement'
+    description: 'specify to scan in a sandbox'
     required: false
   scanallnonfataltoplevelmodules:
     description: 'All top level modules'
@@ -63,6 +63,9 @@ inputs:
     required: false
   toplevel:
     description: 'teams'
+    required: false
+  deleteincompletescan:
+    description: 'delete any incomplete scan in the application or sandbox before submitting'
     required: false
   
     
@@ -94,3 +97,4 @@ runs:
     - ${{ inputs.selectedpreviously }}
     - ${{ inputs.teams }}
     - ${{ inputs.toplevel }}
+    - ${{ inputs.deleteincompletescan }}
