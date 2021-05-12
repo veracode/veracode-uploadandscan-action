@@ -24,7 +24,7 @@ selected=${17}
 selectedpreviously=${18}
 teams=${19}
 toplevel=${20}
-
+deleteincompletescan=${21}
 
 
 
@@ -65,6 +65,7 @@ echo "selected: ${17}"
 echo "selectedpreviously: ${18}"
 echo "teams: ${19}"
 echo "toplevel: ${20}"
+echo "deleteincompletescan: ${21}"
 
 
 #Check if required parameters are set
@@ -223,7 +224,10 @@ then
         fi
 fi
 
-
+if [ "$deleteincompletescan" ]
+then
+    echo "        -deleteIncompleteScan \"$deleteincompletescan\" \\" >> runJava.sh
+fi
 
 
 echo "        -createprofile \"$createprofile\"" >> runJava.sh
@@ -231,7 +235,7 @@ echo "        -createprofile \"$createprofile\"" >> runJava.sh
 
 
 #below pulls latest wrapper version. alternative is to pin a version like so:
-#javawrapperversion=20.8.7.1
+#javawrapperversion=21.4.7.5
 
 
 
