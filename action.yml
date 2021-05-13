@@ -65,7 +65,7 @@ inputs:
     description: 'teams'
     required: false
   deleteincompletescan:
-    description: 'delete any incomplete scan in the application or sandbox before submitting'
+    description: 'automatically delete the current scan if there are any errors when uploading files or starting the scan'
     required: false
   
     
