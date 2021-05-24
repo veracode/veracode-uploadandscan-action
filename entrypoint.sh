@@ -226,7 +226,7 @@ fi
 
 if [ "$deleteincompletescan" ]
 then
-    echo "        -deleteIncompleteScan \"$deleteincompletescan\" \\" >> runJava.sh
+    echo "        -deleteincompletescan \"$deleteincompletescan\" \\" >> runJava.sh
 fi
 
 
