@@ -24,7 +24,7 @@ selected=${17}
 selectedpreviously=${18}
 teams=${19}
 toplevel=${20}
-
+deleteincompletescan=${21}
 
 
 
@@ -65,6 +65,7 @@ echo "selected: ${17}"
 echo "selectedpreviously: ${18}"
 echo "teams: ${19}"
 echo "toplevel: ${20}"
+echo "deleteincompletescan: ${21}"
 
 
 #Check if required parameters are set
@@ -223,7 +224,10 @@ then
         fi
 fi
 
-
+if [ "$deleteincompletescan" ]
+then
+    echo "        -deleteincompletescan \"$deleteincompletescan\" \\" >> runJava.sh
+fi
 
 
 echo "        -createprofile \"$createprofile\"" >> runJava.sh
@@ -231,9 +235,7 @@ echo "        -createprofile \"$createprofile\"" >> runJava.sh
 
 
 #below pulls latest wrapper version. alternative is to pin a version like so:
-#javawrapperversion=20.8.7.1
-
-
+#javawrapperversion=21.5.7.7
 
 javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
 
