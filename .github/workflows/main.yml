@@ -24,9 +24,6 @@ jobs:
     - uses: actions/setup-java@v1
       with: 
         java-version: '8'
-    - uses: actions/upload-artifact@v2
-      with:
-        path: binaries_to_upload/*.jar
     - name: Veracode Upload and Scan Action Step
       uses: ./ # Uses an action in the root directory
       id: upload_and_scan
