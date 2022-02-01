@@ -106,21 +106,30 @@ The following example will upload all files contained within the folder_to_uploa
 The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS IN THE REPOSITORY.
 
 ```yaml
-- uses: actions/setup-java@v1 # Make java accessible on path so the uploadandscan action can run.
-  with: 
-    java-version: '8'
-- uses: actions/upload-artifact@v2 # Copy files from repository to docker container so the next uploadandscan action can access them.
-  with:
-    path: folder_to_upload/*.jar # Wildcards can be used to filter the files copied into the container. See: https://github.com/actions/upload-artifact
-- uses: veracode/veracode-uploadandscan-action@master # Run the uploadandscan action. Inputs are described above.
-  with:
-    filepath: 'folder_to_upload/'
-    vid: '${{ secrets.VERACODE_API_ID }}'
-    vkey: '${{ secrets.VERACODE_API_KEY }}'
-    createsandbox: 'true'
-    sandboxname: 'SANDBOXNAME'
-    scantimeout: 15
-    exclude: '*.js'
-    include: '*.war'
-    criticality: 'VeryHigh'
+name: Veracode Static Analysis Demo
+on: workflow_dispatch
+    
+jobs:
+  static_analysis:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out main branch
+        uses: actions/checkout@v2
+          
+      - name: Veracode Upload And Scan
+        uses: veracode/veracode-uploadandscan-action@0.2.1
+        with:
+          appname: 'VeraDemo'
+          createprofile: false
+          filepath: 'app/target/verademo.war'
+          vid: '${{ secrets.API_ID }}'
+          vkey: '${{ secrets.API_KEY }}'
+#          createsandbox: 'true'
+#          sandboxname: 'SANDBOXNAME'
+#          scantimeout: 0
+#          exclude: '*.js'
+#          include: '*.war'
+#          criticality: 'VeryHigh'
 ```
