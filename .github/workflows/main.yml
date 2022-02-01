@@ -34,9 +34,9 @@ jobs:
         appname: '${{ github.repository }}'
         version: '${{ github.run_id }}'
         filepath: 'binaries_to_upload/*.jar'
-        vid: '${{ secrets.VERACODE_ID }}'
-        vkey: '${{ secrets.VERACODE_KEY }}'
+        vid: '${{ secrets.VERACODE_API_ID }}'
+        vkey: '${{ secrets.VERACODE_API_KEY }}'
         createsandbox: true
-        sandboxname: 'Github - ${{ github.base_ref }}'
+        sandboxname: 'Github - ${{ github.ref }}'
         scantimeout: 15
         criticality: 'VeryHigh'
