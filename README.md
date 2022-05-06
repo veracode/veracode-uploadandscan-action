@@ -107,7 +107,7 @@ With the scan deleted automatically, you can create subsequent scans without hav
 
 ## Example usage
 
-The following example will upload all files contained within the folder_to_upload to Veracode and start a static scan.
+The following example will compile and build a Java web applicatin (.war file) from the main branch of the source code repository using Maven. The compiled .war file is then uploaded to Veracode and a static analysis scan is run.
 
 The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS IN THE REPOSITORY.
 
@@ -123,6 +123,9 @@ jobs:
     steps:
       - name: Check out main branch
         uses: actions/checkout@v2
+        
+      - name: Build with Maven # Compiling the .war binary from the checked out repo source code to upload to the scanner in the next step
+        run: mvn -B package --file app/pom.xml
           
       - name: Veracode Upload And Scan
         uses: veracode/veracode-uploadandscan-action@0.2.1
