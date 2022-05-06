@@ -95,7 +95,7 @@ Veracode recommends that you use the toplevel parameter if you want to ensure th
 
 ### `deleteIncompleteScan`
 
-**Optional** Boolean - Set to true to automatically delete the current scan if there are any errors when uploading files or starting the scan. If the include or exclude parameters are set, this parameter deletes the scan if there are errors when starting the scan after module selection. Defaults to false.
+**Optional**
 
 **In Java API Wrapper version >=22.5.10.0 this parameter has changed to an Integer. One of these values:**
 * 0: do not delete an incomplete scan when running the uploadandscan action. The default. If set, you must delete an incomplete scan manually to proceed with the uploadandscan action.
