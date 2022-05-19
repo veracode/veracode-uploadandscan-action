@@ -25,8 +25,7 @@ selectedpreviously=${18}
 teams=${19}
 toplevel=${20}
 deleteincompletescan=${21}
-
-
+javawrapperversion=${22}
 
 
 echo "Required Information"
@@ -232,14 +231,14 @@ fi
 
 echo "        -createprofile \"$createprofile\"" >> runJava.sh
 
+if [ "$javawrapperversion" ]
+then 
+    javawrapperversion=$javawrapperversion
+else #fetch latest wrapper version from Maven
+    javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
+fi 
 
-
-#below pulls latest wrapper version. alternative is to pin a version like so:
-#javawrapperversion=21.5.7.7
-
-javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
-
-#echo "javawrapperversion: $javawrapperversion"
+echo "javawrapperversion: $javawrapperversion"
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
 chmod 777 runJava.sh
