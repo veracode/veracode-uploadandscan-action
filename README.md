@@ -101,7 +101,7 @@ With the scan deleted automatically, you can create subsequent scans without hav
 
 ### `javawrapperversion`
 
-**Optional** STRING - Allows specifying the version of the Java API Wrapper used by the script to call the Veracode APIs. The default is to use the latest released version of the Veracode Java API Wrapper, as [published in Maven Central](https://search.maven.org/search?q=a:vosp-api-wrappers-java).
+**Optional** STRING - Allows specifying the version of the Java API Wrapper used by the script to call the Veracode APIs. The default is to use the latest released version of the Veracode Java API Wrapper, as [published in Maven Central](https://search.maven.org/search?q=a:vosp-api-wrappers-java). An example of the version string format is `22.5.10.1`.
 
 ## Example usage
 
