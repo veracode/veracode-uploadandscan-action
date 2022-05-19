@@ -67,6 +67,9 @@ inputs:
   deleteincompletescan:
     description: 'automatically delete the current scan if there are any errors when uploading files or starting the scan'
     required: false
+  javawrapperversion:
+    description: 'specify version of the Java API Wrapper; default is latest'
+    required: false 
   
     
  
@@ -98,3 +101,4 @@ runs:
     - ${{ inputs.teams }}
     - ${{ inputs.toplevel }}
     - ${{ inputs.deleteincompletescan }}
+    - ${{ inputs.javawrapperversion }}

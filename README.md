@@ -99,6 +99,10 @@ Veracode recommends that you use the toplevel parameter if you want to ensure th
 
 With the scan deleted automatically, you can create subsequent scans without having to manually delete an incomplete scan.
 
+### `javawrapperversion`
+
+**Optional** STRING - Allows specifying the version of the Java API Wrapper used by the script to call the Veracode APIs. The default is to use the latest released version of the Veracode Java API Wrapper, as [published in Maven Central](https://search.maven.org/search?q=a:vosp-api-wrappers-java).
+
 ## Example usage
 
 The following example will upload all files contained within the folder_to_upload to Veracode and start a static scan.
