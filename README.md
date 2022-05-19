@@ -95,7 +95,13 @@ Veracode recommends that you use the toplevel parameter if you want to ensure th
 
 ### `deleteIncompleteScan`
 
-**Optional** BOOLEAN - Set to true to automatically delete the current scan if there are any errors when uploading files or starting the scan. If the include or exclude parameters are set, this parameter deletes the scan if there are errors when starting the scan after module selection. Defaults to false.
+**Optional**
+
+**In Java API Wrapper version >=22.5.10.0 this parameter has changed to an Integer. One of these values:**
+* 0: do not delete an incomplete scan when running the uploadandscan action. The default. If set, you must delete an incomplete scan manually to proceed with the uploadandscan action.
+* 1: delete a scan with a status of incomplete, no modules defined, failed, or canceled to proceed with the uploadandscan action. If errors occur when running this action, the Java wrapper automatically deletes the incomplete scan.
+* 2: delete a scan of any status except Results Ready to proceed with the uploadandscan action. If errors occur when running this action, the Java wrapper automatically deletes the incomplete scan.
+
 
 With the scan deleted automatically, you can create subsequent scans without having to manually delete an incomplete scan.
 
@@ -105,26 +111,38 @@ With the scan deleted automatically, you can create subsequent scans without hav
 
 ## Example usage
 
-The following example will upload all files contained within the folder_to_upload to Veracode and start a static scan.
+The following example will compile and build a Java web applicatin (.war file) from the main branch of the source code repository using Maven. The compiled .war file is then uploaded to Veracode and a static analysis scan is run.
 
 The veracode credentials are read from github secrets. NEVER STORE YOUR SECRETS IN THE REPOSITORY.
 
 ```yaml
-- uses: actions/setup-java@v1 # Make java accessible on path so the uploadandscan action can run.
-  with: 
-    java-version: '8'
-- uses: actions/upload-artifact@v2 # Copy files from repository to docker container so the next uploadandscan action can access them.
-  with:
-    path: folder_to_upload/*.jar # Wildcards can be used to filter the files copied into the container. See: https://github.com/actions/upload-artifact
-- uses: veracode/veracode-uploadandscan-action@master # Run the uploadandscan action. Inputs are described above.
-  with:
-    filepath: 'folder_to_upload/'
-    vid: '${{ secrets.VERACODE_API_ID }}'
-    vkey: '${{ secrets.VERACODE_API_KEY }}'
-    createsandbox: 'true'
-    sandboxname: 'SANDBOXNAME'
-    scantimeout: 15
-    exclude: '*.js'
-    include: '*.war'
-    criticality: 'VeryHigh'
+name: Veracode Static Analysis Demo
+on: workflow_dispatch
+    
+jobs:
+  static_analysis:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out main branch
+        uses: actions/checkout@v2
+        
+      - name: Build with Maven # Compiling the .war binary from the checked out repo source code to upload to the scanner in the next step
+        run: mvn -B package --file app/pom.xml
+          
+      - name: Veracode Upload And Scan
+        uses: veracode/veracode-uploadandscan-action@0.2.1
+        with:
+          appname: 'VeraDemo'
+          createprofile: false
+          filepath: 'app/target/verademo.war'
+          vid: '${{ secrets.API_ID }}'
+          vkey: '${{ secrets.API_KEY }}'
+#          createsandbox: 'true'
+#          sandboxname: 'SANDBOXNAME'
+#          scantimeout: 0
+#          exclude: '*.js'
+#          include: '*.war'
+#          criticality: 'VeryHigh'
 ```
