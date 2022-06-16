@@ -102,3 +102,4 @@ runs:
     - ${{ inputs.toplevel }}
     - ${{ inputs.deleteincompletescan }}
     - ${{ inputs.javawrapperversion }}
+    - ${{ inputs.debug }}
