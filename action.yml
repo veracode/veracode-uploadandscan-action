@@ -69,7 +69,10 @@ inputs:
     required: false
   javawrapperversion:
     description: 'specify version of the Java API Wrapper; default is latest'
-    required: false 
+    required: false
+  debug:
+    description: 'show detailed diagnostic information, which you can use for debugging, in the output.'
+    required: false
   
     
  
