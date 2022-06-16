@@ -232,7 +232,7 @@ then
 fi
 
 
-echo "        -createprofile \"$createprofile\"" >> runJava.sh
+echo "        -createprofile \"$createprofile\" \\" >> runJava.sh
 
 if [ "$javawrapperversion" ]
 then 
@@ -245,7 +245,7 @@ echo "javawrapperversion: $javawrapperversion"
 
 if [ "$debug" ]
 then
-    echo "        -debug \"$debug\" \\" >> runJava.sh
+    echo "        -debug \"$debug\"" >> runJava.sh
 fi
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
