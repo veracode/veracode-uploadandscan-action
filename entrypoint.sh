@@ -26,6 +26,7 @@ teams=${19}
 toplevel=${20}
 deleteincompletescan=${21}
 javawrapperversion=${22}
+debug=${23}
 
 
 echo "Required Information"
@@ -65,6 +66,8 @@ echo "selectedpreviously: ${18}"
 echo "teams: ${19}"
 echo "toplevel: ${20}"
 echo "deleteincompletescan: ${21}"
+echo "javawrapperversion: ${22}"
+echo "debug: ${23}"
 
 
 #Check if required parameters are set
@@ -229,7 +232,7 @@ then
 fi
 
 
-echo "        -createprofile \"$createprofile\"" >> runJava.sh
+echo "        -createprofile \"$createprofile\" \\" >> runJava.sh
 
 if [ "$javawrapperversion" ]
 then 
@@ -239,6 +242,11 @@ else #fetch latest wrapper version from Maven
 fi 
 
 echo "javawrapperversion: $javawrapperversion"
+
+if [ "$debug" ]
+then
+    echo "        -debug \"$debug\"" >> runJava.sh
+fi
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
 chmod 777 runJava.sh

@@ -109,6 +109,10 @@ With the scan deleted automatically, you can create subsequent scans without hav
 
 **Optional** STRING - Allows specifying the version of the Java API Wrapper used by the script to call the Veracode APIs. The default is to use the latest released version of the Veracode Java API Wrapper, as [published in Maven Central](https://search.maven.org/search?q=a:vosp-api-wrappers-java). An example of the version string format is `22.5.10.1`.
 
+### `debug`
+
+**Optional** BOOLEAN - Set to true to show detailed diagnostic information, which you can use for debugging, in the output. 
+
 ## Example usage
 
 The following example will compile and build a Java web applicatin (.war file) from the main branch of the source code repository using Maven. The compiled .war file is then uploaded to Veracode and a static analysis scan is run.
