@@ -23,7 +23,7 @@ inputs:
     description: 'vkey'
     required: true
   createsandbox: 
-    description: 'true or flase'
+    description: 'true or false'
     required: false
   sandboxname:
     description: 'name of the sandbox'
