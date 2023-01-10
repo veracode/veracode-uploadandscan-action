@@ -18,8 +18,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - uses: actions/setup-java@v1 # Make java accessible on path so the uploadandscan action can run.
+      - uses: actions/setup-java@v2 # Make java accessible on path so the uploadandscan action can run.
         with: 
+          distribution: 'adopt'
           java-version: '8'
           
       # zip the project and move it to a staging directory

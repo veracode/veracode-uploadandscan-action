@@ -95,15 +95,13 @@ Veracode recommends that you use the toplevel parameter if you want to ensure th
 
 ### `deleteincompletescan`
 
-**Optional**
-
 **In Java API Wrapper version >=22.5.10.0 this parameter has changed to an Integer. One of these values:**
+
 * 0: do not delete an incomplete scan when running the uploadandscan action. The default. If set, you must delete an incomplete scan manually to proceed with the uploadandscan action.
 * 1: delete a scan with a status of incomplete, no modules defined, failed, or canceled to proceed with the uploadandscan action. If errors occur when running this action, the Java wrapper automatically deletes the incomplete scan.
 * 2: delete a scan of any status except Results Ready to proceed with the uploadandscan action. If errors occur when running this action, the Java wrapper automatically deletes the incomplete scan.
 
-
-With the scan deleted automatically, you can create subsequent scans without having to manually delete an incomplete scan.
+**Optional** With the scan deleted automatically, you can create subsequent scans without having to manually delete an incomplete scan.
 
 ### `javawrapperversion`
 
@@ -111,9 +109,11 @@ With the scan deleted automatically, you can create subsequent scans without hav
 
 ### `debug`
 
-**Optional** BOOLEAN - Set to true to show detailed diagnostic information, which you can use for debugging, in the output. 
+**Optional** BOOLEAN - Set to true to show detailed diagnostic information, which you can use for debugging, in the output.
 
-## Example usage
+## Examples
+
+### General Usage
 
 The following example will compile and build a Java web applicatin (.war file) from the main branch of the source code repository using Maven. The compiled .war file is then uploaded to Veracode and a static analysis scan is run.
 
@@ -149,4 +149,41 @@ jobs:
 #          exclude: '*.js'
 #          include: '*.war'
 #          criticality: 'VeryHigh'
+```
+
+### Using This Action With a Mac Runner
+
+Docker is not installed on Mac runners by default, and [installing it can be time consuming](https://github.com/actions/runner/issues/1456). As an alternative, we suggest breaking the build and upload for languages that require a Mac runner to build (like iOS) into separate jobs. An example workflow is below:
+
+```yaml
+jobs:
+  build:
+    name: Build
+    runs-on: macos-12
+    
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      
+      # SNIP: steps to build an iOS application
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: path/to/iOSApplication.zip
+  scan:
+      name: Scan
+      runs-on: ubuntu-latest
+      needs: build
+      steps:
+        - uses: actions/download-artifact@v3
+          with:
+            path: iOSApplication.zip
+  
+        - name: Upload & Scan
+          uses: veracode/veracode-uploadandscan-action@0.2.4
+          with:
+            appname: 'MyTestApp'
+            filepath: 'iOSApplication.zip'
+            vid: 'FakeID'
+            vkey: 'FakeKey'
 ```
