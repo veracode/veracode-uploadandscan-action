@@ -93,7 +93,7 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 **Optional** BOOLEAN - When set to true, Veracode only scans the top-level modules in your files.
 Veracode recommends that you use the toplevel parameter if you want to ensure the scan completes even though there are non-fatal errors, such as unsupported frameworks.
 
-### `deleteIncompleteScan`
+### `deleteincompletescan`
 
 **Optional**
 
@@ -136,7 +136,7 @@ jobs:
         run: mvn -B package --file app/pom.xml
           
       - name: Veracode Upload And Scan
-        uses: veracode/veracode-uploadandscan-action@0.2.1
+        uses: veracode/veracode-uploadandscan-action@0.2.4
         with:
           appname: 'VeraDemo'
           createprofile: false
