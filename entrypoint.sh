@@ -234,12 +234,16 @@ fi
 
 echo "        -createprofile \"$createprofile\" \\" >> runJava.sh
 
+if [ ! -n "$MVN_REPO_URL" ]; then
+  MVN_REPO_URL="https://repo1.maven.apache.org/maven2"
+fi
+
 if [ "$javawrapperversion" ]
-then 
+then
     javawrapperversion=$javawrapperversion
 else #fetch latest wrapper version from Maven
-    javawrapperversion=$(curl https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
-fi 
+    javawrapperversion=$(curl $MVN_REPO_URL/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/maven-metadata.xml | grep latest |  cut -d '>' -f 2 | cut -d '<' -f 1)
+fi
 
 echo "javawrapperversion: $javawrapperversion"
 
@@ -248,7 +252,7 @@ then
     echo "        -debug \"$debug\"" >> runJava.sh
 fi
 
-curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
+curl -sS -o VeracodeJavaAPI.jar "$MVN_REPO_URL/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
 chmod 777 runJava.sh
 cat runJava.sh
 ./runJava.sh
