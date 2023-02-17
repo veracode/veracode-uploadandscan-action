@@ -25,8 +25,9 @@ selectedpreviously=${18}
 teams=${19}
 toplevel=${20}
 deleteincompletescan=${21}
-javawrapperversion=${22}
-debug=${23}
+scanpollinginterval=${22}
+javawrapperversion=${23}
+debug=${24}
 
 
 echo "Required Information"
@@ -66,8 +67,9 @@ echo "selectedpreviously: ${18}"
 echo "teams: ${19}"
 echo "toplevel: ${20}"
 echo "deleteincompletescan: ${21}"
-echo "javawrapperversion: ${22}"
-echo "debug: ${23}"
+echo "scanpollinginterval: ${22}"
+echo "javawrapperversion: ${23}"
+echo "debug: ${24}"
 
 
 #Check if required parameters are set
@@ -229,6 +231,12 @@ fi
 if [ "$deleteincompletescan" ]
 then
     echo "        -deleteincompletescan \"$deleteincompletescan\" \\" >> runJava.sh
+fi
+
+
+if [ "$scanpollinginterval" ]
+then
+    echo "        -scanpollinginterval \"$scanpollinginterval\" \\" >> runJava.sh
 fi
 
 

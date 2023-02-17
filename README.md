@@ -102,7 +102,12 @@ Veracode recommends that you use the toplevel parameter if you want to ensure th
 * 2: delete a scan of any status except Results Ready to proceed with the uploadandscan action. If errors occur when running this action, the Java wrapper automatically deletes the incomplete scan.
 
 **Optional** With the scan deleted automatically, you can create subsequent scans without having to manually delete an incomplete scan.
-
+  
+### `scanpollinginterval`  
+  
+**Optional** INTEGER - Interval, in seconds, to poll for the status of a running scan. Value range is 30 to 120 (two minutes). Default is 120.  
+  
+  
 ### `javawrapperversion`
 
 **Optional** STRING - Allows specifying the version of the Java API Wrapper used by the script to call the Veracode APIs. The default is to use the latest released version of the Veracode Java API Wrapper, as [published in Maven Central](https://search.maven.org/search?q=a:vosp-api-wrappers-java). An example of the version string format is `22.5.10.1`.

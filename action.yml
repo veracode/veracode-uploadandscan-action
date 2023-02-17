@@ -67,6 +67,9 @@ inputs:
   deleteincompletescan:
     description: 'automatically delete the current scan if there are any errors when uploading files or starting the scan'
     required: false
+  scanpollinginterval:
+    description: 'Interval, in seconds, to poll for the status of a running scan. Value range is 30 to 120 (two minutes). Default is 120.'
+    required: false
   javawrapperversion:
     description: 'specify version of the Java API Wrapper; default is latest'
     required: false
@@ -104,5 +107,6 @@ runs:
     - ${{ inputs.teams }}
     - ${{ inputs.toplevel }}
     - ${{ inputs.deleteincompletescan }}
+    - ${{ inputs.scanpollinginterval }}
     - ${{ inputs.javawrapperversion }}
     - ${{ inputs.debug }}
