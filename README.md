@@ -116,6 +116,16 @@ Veracode recommends that you use the toplevel parameter if you want to ensure th
 
 **Optional** BOOLEAN - Set to true to show detailed diagnostic information, which you can use for debugging, in the output.
 
+## Environment variables
+
+### Optional envvars
+
+### `MVN_REPO_URL`
+
+**Optional** STRING - Set to use an alternative maven repository.
+
+If `MVN_REPO_URL` is set then the jar wrapper is downloaded from this url. Otherwise, the default central will be used (`https://repo1.maven.apache.org/maven2`).
+
 ## Examples
 
 ### General Usage
@@ -142,6 +152,8 @@ jobs:
           
       - name: Veracode Upload And Scan
         uses: veracode/veracode-uploadandscan-action@0.2.4
+#        env:
+#          MVN_REPO_URL: "https://my.company.com/repository/central"
         with:
           appname: 'VeraDemo'
           createprofile: false
