@@ -37,6 +37,9 @@ inputs:
   include:
     description: 'modules to include in module selection'
     required: false
+  includenewmodules:
+    description: 'automatically select all new top-level modules for inclusion in the scan'
+    required: false
   criticality:
     description: 'business criticality - policy selection'
     required: false
@@ -97,6 +100,7 @@ runs:
     - ${{ inputs.scantimeout }}
     - ${{ inputs.exclude }}
     - ${{ inputs.include }}
+    - ${{ inputs.includenewmodules }}
     - ${{ inputs.criticality }}
     - ${{ inputs.pattern }}
     - ${{ inputs.replacement }}

@@ -56,6 +56,10 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 
 **Optional** STRING - Include modules in modules selection / scanning. Case-sensitive, comma-separated list of module name patterns that represent the names of modules to scan as top-level modules. The * wildcard matches 0 or more characters. The ? wildcard matches exactly one character.
 
+### `includenewmodules`
+
+**Optional**scanallnonfataltoplevelmodules are true, set this parameter to true to automatically select all new top-level modules for inclusion in the scan. By default, the scan only includes previously selected modules.
+
 ### `criticality`
 
 **Optional** STRING - Set the business criticality, autoamtically choosing the corresponding policy to rate findings. Options: VeryHigh, High, Medium, Low, VeryLow
