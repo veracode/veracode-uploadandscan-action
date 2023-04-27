@@ -58,7 +58,7 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 
 ### `includenewmodules`
 
-**Optional**scanallnonfataltoplevelmodules are true, set this parameter to true to automatically select all new top-level modules for inclusion in the scan. By default, the scan only includes previously selected modules.
+**Optional** BOOLEAN - If scanallnonfataltoplevelmodules are true, set this parameter to true to automatically select all new top-level modules for inclusion in the scan. By default, the scan only includes previously selected modules.
 
 ### `criticality`
 
