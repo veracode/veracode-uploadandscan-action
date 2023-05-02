@@ -28,6 +28,7 @@ deleteincompletescan=${21}
 scanpollinginterval=${22}
 javawrapperversion=${23}
 debug=${24}
+includenewmodules=${25}
 
 
 echo "Required Information"
@@ -70,6 +71,7 @@ echo "deleteincompletescan: ${21}"
 echo "scanpollinginterval: ${22}"
 echo "javawrapperversion: ${23}"
 echo "debug: ${24}"
+echo "includenewmodules: ${25}"
 
 
 #Check if required parameters are set
@@ -254,6 +256,11 @@ echo "javawrapperversion: $javawrapperversion"
 if [ "$debug" ]
 then
     echo "        -debug \"$debug\"" >> runJava.sh
+fi
+
+if [ "$includenewmodules" ] #
+then
+    echo "        -includenewmodules \"$includenewmodules\"" >> runJava.sh
 fi
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"

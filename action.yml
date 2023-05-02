@@ -76,7 +76,9 @@ inputs:
   debug:
     description: 'show detailed diagnostic information, which you can use for debugging, in the output.'
     required: false
-  
+  includenewmodules:
+    description: 'automatically select all new top-level modules for inclusion in the scan'
+    required: false  
     
  
 # outputs:
@@ -110,3 +112,4 @@ runs:
     - ${{ inputs.scanpollinginterval }}
     - ${{ inputs.javawrapperversion }}
     - ${{ inputs.debug }}
+    - ${{ inputs.includenewmodules }}
