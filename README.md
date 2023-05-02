@@ -145,7 +145,7 @@ jobs:
         run: mvn -B package --file app/pom.xml
           
       - name: Veracode Upload And Scan
-        uses: veracode/veracode-uploadandscan-action@0.2.4
+        uses: veracode/veracode-uploadandscan-action@0.2.6
         with:
           appname: 'VeraDemo'
           createprofile: false
@@ -189,7 +189,7 @@ jobs:
             path: iOSApplication.zip
   
         - name: Upload & Scan
-          uses: veracode/veracode-uploadandscan-action@0.2.4
+          uses: veracode/veracode-uploadandscan-action@0.2.6
           with:
             appname: 'MyTestApp'
             filepath: 'iOSApplication.zip'
