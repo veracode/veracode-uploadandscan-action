@@ -39,7 +39,7 @@ echo "filepath: $filepath"
 echo "version: $version"
 if [ "$vid" ]
 then
-echo "vid: ***"
+echo "vid: $vid"
 else
 echo "vid:"
 fi

@@ -36,6 +36,6 @@ jobs:
           appname: '${{ github.repository }}'
           version: '${{ github.run_id }}'
           filepath: 'project.zip'
-          vid: '${{ secrets.VERACODE_API_ID }}'
+          vid: '${{ vars.VERACODE_API_ID }}'
           vkey: '${{ secrets.VERACODE_API_KEY }}'
           scantimeout: 15
