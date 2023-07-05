@@ -79,8 +79,12 @@ inputs:
   includenewmodules:
     description: 'automatically select all new top-level modules for inclusion in the scan'
     required: false  
-    
- 
+  maxretrycount:
+    description: 'Number of times to retry the last request during certain error conditions or when a request times out. Value range is 1 to 5.'
+    required: false
+    default: 5
+
+
 # outputs:
 #   time: # id of output
 #     description: 'The time we greeted you'
@@ -113,3 +117,4 @@ runs:
     - ${{ inputs.javawrapperversion }}
     - ${{ inputs.debug }}
     - ${{ inputs.includenewmodules }}
+    - ${{ inputs.maxretrycount }}

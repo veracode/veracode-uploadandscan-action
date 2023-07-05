@@ -29,6 +29,7 @@ scanpollinginterval=${22}
 javawrapperversion=${23}
 debug=${24}
 includenewmodules=${25}
+maxretrycount=${26}
 
 
 echo "Required Information"
@@ -72,6 +73,7 @@ echo "scanpollinginterval: ${22}"
 echo "javawrapperversion: ${23}"
 echo "debug: ${24}"
 echo "includenewmodules: ${25}"
+echo "maxretrycount: ${26}"
 
 
 #Check if required parameters are set
@@ -261,6 +263,11 @@ fi
 if [ "$includenewmodules" ] #
 then
     echo "        -includenewmodules \"$includenewmodules\"" >> runJava.sh
+fi
+
+if [ "$maxretrycount" ]
+then
+    echo "        -maxretrycount \"$maxretrycount\"" >> runJava.sh
 fi
 
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
