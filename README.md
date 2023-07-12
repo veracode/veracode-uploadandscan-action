@@ -120,6 +120,10 @@ Veracode recommends that you use the toplevel parameter if you want to ensure th
 
 **Optional** BOOLEAN - Set to true to show detailed diagnostic information, which you can use for debugging, in the output.
 
+### `maxretrycount`
+
+**Optional** INTEGER - Number of times to retry the last request during certain error conditions or when a request times out. Value range is 1 to 5. Default is 5
+
 ## Examples
 
 ### General Usage
