@@ -62,7 +62,7 @@ This action runs the Veracode Java Wrapper's 'upload and scan' action.
 
 ### `criticality`
 
-**Optional** STRING - Set the business criticality, autoamtically choosing the corresponding policy to rate findings. Options: VeryHigh, High, Medium, Low, VeryLow
+**Optional** STRING - Set the business criticality, automatically choosing the corresponding policy to rate findings. Options: VeryHigh, High, Medium, Low, VeryLow
 
 ### `pattern`
 
