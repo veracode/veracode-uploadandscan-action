@@ -1,4 +1,5 @@
 #!/bin/sh -l
+parameters=[ appname, createprofile, filepath, version, vid, vkey, createsandbox, sandboxname, scantimeout,exclude, include, criticality, pattern, replacement, sandboxid,scanallnonfataltoplevelmodules,selected,selectedpreviously, teams, toplevel, deleteincompletescan, scanpollinginterval, javawrapperversion, debug, includenewmodules, maxretrycount, policy]
 
 #required parameters
 appname=$1
@@ -30,7 +31,7 @@ javawrapperversion=${23}
 debug=${24}
 includenewmodules=${25}
 maxretrycount=${26}
-
+policy=${27}
 
 echo "Required Information"
 echo "===================="
@@ -38,14 +39,15 @@ echo "appname: $appname"
 echo "createprofile: $createprofile"
 echo "filepath: $filepath"
 echo "version: $version"
-if [ "$vid" ]
+#echo "policy: $policy" 
+if [ "$vid"  || "${5}" ]
 then
 echo "vid: ***"
 else
 echo "vid:"
 fi
 
-if [ "$vkey" ]
+if [ "$vkey" || "${6}" ]
 then
 echo "vkey: ***"
 else
@@ -54,9 +56,9 @@ fi
 echo ""
 echo "Optional Information"
 echo "===================="
-echo "createsandbox: $createsandbox"
-echo "sandboxname: $8"
-echo "scantimeout: $9"
+echo "createsandbox: ${7}" #createsandbox" # why is this in a differnt convention ? 
+echo "sandboxname: ${8}"
+echo "scantimeout: ${9}"
 echo "exclude: ${10}"
 echo "include: ${11}"
 echo "criticality: ${12}"
@@ -74,6 +76,7 @@ echo "javawrapperversion: ${23}"
 echo "debug: ${24}"
 echo "includenewmodules: ${25}"
 echo "maxretrycount: ${26}"
+echo "policy: ${27}"
 
 
 #Check if required parameters are set
@@ -270,7 +273,12 @@ then
     echo "        -maxretrycount \"$maxretrycount\" \\" >> runJava.sh
 fi
 
+if [ "$policy" ]
+then
+    echo "        -policy \"$policy\" \\" >> runJava.sh
+fi
+
 curl -sS -o VeracodeJavaAPI.jar "https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$javawrapperversion/vosp-api-wrappers-java-$javawrapperversion.jar"
-chmod 777 runJava.sh
-cat runJava.sh
+chmod 777 runJava.sh # does it need full 7 ? 
+cat runJava.sh        
 ./runJava.sh
