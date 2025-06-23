@@ -124,6 +124,10 @@ Veracode recommends that you use the toplevel parameter if you want to ensure th
 
 **Optional** INTEGER - Number of times to retry the last request during certain error conditions or when a request times out. Value range is 1 to 5. Default is 5
 
+### `policy` 
+
+**Optional** STRING - The policy name that matches the policy in the Veracode platform you want to assign to the application profile on creation. Default is '' and the [`criticality`]("### `criticality`") will be used.
+
 ## Examples
 
 ### General Usage
