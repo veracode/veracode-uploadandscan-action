@@ -42,4 +42,5 @@ jobs:
         sandboxname: 'Github - ${{ github.ref }}'
         scantimeout: 15
         criticality: 'VeryHigh'
-        createprofile: false
+        createprofile: true
+        policy: 'Test policy 2'
