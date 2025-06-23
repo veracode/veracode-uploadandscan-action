@@ -46,10 +46,6 @@ inputs:
   replacement:
     description: 'replacement'
     required: false
-   policy:
-    description: 'Veracode Policy Name'
-    required: false
-    default: ''
   sandboxid:
     description: 'specify to scan in a sandbox'
     required: false
@@ -87,6 +83,10 @@ inputs:
     description: 'Number of times to retry the last request during certain error conditions or when a request times out. Value range is 1 to 5.'
     required: false
     default: 5
+  policy:
+    description: 'Veracode Policy Name'
+    required: false
+    default: ''
 
 
 # outputs:
