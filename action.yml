@@ -122,3 +122,4 @@ runs:
     - ${{ inputs.debug }}
     - ${{ inputs.includenewmodules }}
     - ${{ inputs.maxretrycount }}
+    - ${{ inputs.policy }}
