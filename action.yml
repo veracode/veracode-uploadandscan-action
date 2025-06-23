@@ -46,6 +46,10 @@ inputs:
   replacement:
     description: 'replacement'
     required: false
+   policy:
+    description: 'Veracode Policy Name'
+    required: false
+    default: ''
   sandboxid:
     description: 'specify to scan in a sandbox'
     required: false
