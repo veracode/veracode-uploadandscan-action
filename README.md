@@ -126,7 +126,7 @@ Veracode recommends that you use the toplevel parameter if you want to ensure th
 
 ### `policy` 
 
-**Optional** STRING - The policy name that matches the policy in the Veracode platform you want to assign to the application profile on creation. Default is '' and the [`criticality`]("### `criticality`") will be used.
+**Optional** STRING - The policy name that matches the policy in the Veracode platform you want to assign to the application profile on creation. Default is '' and the [`criticality`](README.md#criticality) will be used.
 
 ## Examples
 
