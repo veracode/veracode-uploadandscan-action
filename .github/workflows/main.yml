@@ -26,7 +26,7 @@ jobs:
       with: 
         distribution: 'adopt'
         java-version: '8'
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4.6.2
       with:
         path: binaries_to_upload/*.jar
     - name: Veracode Upload and Scan Action Step
@@ -42,4 +42,5 @@ jobs:
         sandboxname: 'Github - ${{ github.ref }}'
         scantimeout: 15
         criticality: 'VeryHigh'
-        createprofile: false
+        createprofile: true
+        policy: 'Test policy 2'
