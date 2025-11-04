@@ -27,7 +27,7 @@ jobs:
         with:
           appname: '${{ github.repository }}'
           version: '${{ github.run_id }}'
-          filepath: 'hello.jar'
+          filepath: 'binaries_to_upload/hello.jar'
           vid: '${{ secrets.VERACODE_API_ID }}'
           vkey: '${{ secrets.VERACODE_API_KEY }}'
           scantimeout: 15
