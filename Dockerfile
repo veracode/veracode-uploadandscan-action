@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM openjdk:latest
+FROM eclipse-temurin:latest
     
 #RUN yum install curl
 
