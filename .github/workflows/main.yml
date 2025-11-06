@@ -23,7 +23,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v3
     - uses: actions/setup-java@v2
-      with: 
+      with:
         distribution: 'adopt'
         java-version: '8'
     - uses: actions/upload-artifact@v4.6.2
@@ -44,3 +44,7 @@ jobs:
         criticality: 'VeryHigh'
         createprofile: true
         policy: 'Test policy 2'
+
+  docker-build:
+    name: Docker Build
+    uses: ./.github/workflows/docker.yml

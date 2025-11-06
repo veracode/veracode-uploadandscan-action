@@ -94,7 +94,7 @@ inputs:
 #     description: 'The time we greeted you'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'ghcr.io/veracode/veracode-uploadandscan-action:0.2.10'
   args:
     - ${{ inputs.appname }}
     - ${{ inputs.createprofile }}

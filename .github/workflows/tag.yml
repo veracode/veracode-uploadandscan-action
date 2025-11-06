@@ -1,0 +1,26 @@
+name: Build Tagged Docker Image
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  check-action-image-tag-matches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          IMAGE_TAG="$(yq e '(.runs.image | split(":"))[1]' action.yml)"
+          if [ "$IMAGE_TAG" = "${{ github.ref_name }}" ]
+          then
+              printf "All ok\n"
+          else
+              printf "%s != %s; please update the action.yml\n" "$IMAGE_TAG" "${{ github.ref_name }}"
+              exit 1
+          fi
+
+  docker-build:
+    name: Docker Build
+    needs: [check-action-image-tag-matches]
+    uses: ./.github/workflows/docker.yml
