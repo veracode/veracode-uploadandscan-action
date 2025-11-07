@@ -147,13 +147,13 @@ jobs:
     
     steps:
       - name: Check out main branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
       - name: Build with Maven # Compiling the .war binary from the checked out repo source code to upload to the scanner in the next step
         run: mvn -B package --file app/pom.xml
           
       - name: Veracode Upload And Scan
-        uses: veracode/veracode-uploadandscan-action@0.2.6
+        uses: veracode/veracode-uploadandscan-action@0.2.10
         with:
           appname: 'VeraDemo'
           createprofile: false
@@ -166,41 +166,4 @@ jobs:
 #          exclude: '*.js'
 #          include: '*.war'
 #          criticality: 'VeryHigh'
-```
-
-### Using This Action With a Mac Runner
-
-Docker is not installed on Mac runners by default, and [installing it can be time consuming](https://github.com/actions/runner/issues/1456). As an alternative, we suggest breaking the build and upload for languages that require a Mac runner to build (like iOS) into separate jobs. An example workflow is below:
-
-```yaml
-jobs:
-  build:
-    name: Build
-    runs-on: macos-12
-    
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      
-      # SNIP: steps to build an iOS application
-
-      - uses: actions/upload-artifact@v3
-        with:
-          path: path/to/iOSApplication.zip
-  scan:
-      name: Scan
-      runs-on: ubuntu-latest
-      needs: build
-      steps:
-        - uses: actions/download-artifact@v3
-          with:
-            path: iOSApplication.zip
-  
-        - name: Upload & Scan
-          uses: veracode/veracode-uploadandscan-action@0.2.6
-          with:
-            appname: 'MyTestApp'
-            filepath: 'iOSApplication.zip'
-            vid: 'FakeID'
-            vkey: 'FakeKey'
 ```
