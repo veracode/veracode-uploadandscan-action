@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as https from 'https';
 import { spawn } from 'child_process';
 import * as process from 'process';
+import * as core from '@actions/core'
 
 // Get inputs from environment variables (GitHub Actions passes inputs as INPUT_<INPUT_NAME>)
 function getInput(name: string): string | undefined {
@@ -11,35 +12,35 @@ function getInput(name: string): string | undefined {
 }
 
 // Required parameters
-const appname = getInput('appname');
-const createprofile = getInput('createprofile');
-const filepath = getInput('filepath');
-const version = getInput('version');
-const vid = getInput('vid');
-const vkey = getInput('vkey');
+const appname = core.getInput('appname');
+const createprofile = core.getInput('createprofile');
+const filepath = core.getInput('filepath');
+const version = core.getInput('version');
+const vid = core.getInput('vid');
+const vkey = core.getInput('vkey');
 
 // Optional parameters
-const createsandbox = getInput('createsandbox');
-const sandboxname = getInput('sandboxname');
-const scantimeout = getInput('scantimeout');
-const exclude = getInput('exclude');
-const include = getInput('include');
-const criticality = getInput('criticality');
-const pattern = getInput('pattern');
-const replacement = getInput('replacement');
-const sandboxid = getInput('sandboxid');
-const scanallnonfataltoplevelmodules = getInput('scanallnonfataltoplevelmodules');
-const selected = getInput('selected');
-const selectedpreviously = getInput('selectedpreviously');
-const teams = getInput('teams');
-const toplevel = getInput('toplevel');
-const deleteincompletescan = getInput('deleteincompletescan');
-const scanpollinginterval = getInput('scanpollinginterval');
-const javawrapperversion = getInput('javawrapperversion');
-const debug = getInput('debug');
-const includenewmodules = getInput('includenewmodules');
-const maxretrycount = getInput('maxretrycount');
-const policy = getInput('policy');
+const createsandbox = core.getInput('createsandbox');
+const sandboxname = core.getInput('sandboxname');
+const scantimeout = core.getInput('scantimeout');
+const exclude = core.getInput('exclude');
+const include = core.getInput('include');
+const criticality = core.getInput('criticality');
+const pattern = core.getInput('pattern');
+const replacement = core.getInput('replacement');
+const sandboxid = core.getInput('sandboxid');
+const scanallnonfataltoplevelmodules = core.getInput('scanallnonfataltoplevelmodules');
+const selected = core.getInput('selected');
+const selectedpreviously = core.getInput('selectedpreviously');
+const teams = core.getInput('teams');
+const toplevel = core.getInput('toplevel');
+const deleteincompletescan = core.getInput('deleteincompletescan');
+const scanpollinginterval = core.getInput('scanpollinginterval');
+const javawrapperversion = core.getInput('javawrapperversion');
+const debug = core.getInput('debug');
+const includenewmodules = core.getInput('includenewmodules');
+const maxretrycount = core.getInput('maxretrycount');
+const policy = core.getInput('policy');
 
 // Print required information
 console.log('Required Information');
