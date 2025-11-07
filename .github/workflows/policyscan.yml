@@ -19,7 +19,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       # Run the uploadandscan action. Inputs are described above.
-      - uses: veracode/veracode-uploadandscan-action@master
+      - uses: veracode/veracode-uploadandscan-action@rewriteToTS
         with:
           appname: '${{ github.repository }}'
           version: '${{ github.run_id }}'
