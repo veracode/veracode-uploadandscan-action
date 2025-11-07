@@ -1,0 +1,22 @@
+{
+  "name": "veracode-uploadandscan-action",
+  "version": "1.0.0",
+  "description": "Upload files to Veracode and start a static scan",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "veracode",
+    "github-action"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
+
