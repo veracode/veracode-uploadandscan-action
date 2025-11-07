@@ -1,3 +1,6 @@
+node_modules/
+*.log
 .DS_Store
-runJava.sh
 VeracodeJavaAPI.jar
+Dockerfile
+entrypoint.sh
