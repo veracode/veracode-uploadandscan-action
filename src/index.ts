@@ -3,7 +3,8 @@ import * as path from 'path';
 import * as https from 'https';
 import { spawn } from 'child_process';
 import * as process from 'process';
-import * as core from '@actions/core'
+import * as core from '@actions/core';
+import { glob } from 'glob';
 
 // Get inputs from environment variables (GitHub Actions passes inputs as INPUT_<INPUT_NAME>)
 function getInput(name: string): string | undefined {
@@ -90,6 +91,50 @@ if (!appname || !createprofile || !filepath || !version || !vid || !vkey) {
   process.exit(1);
 }
 
+// Expand wildcards in filepath (matching shell behavior)
+async function expandFilepath(filepath: string): Promise<string> {
+  // Check if filepath contains wildcards
+  if (filepath.includes('*') || filepath.includes('?')) {
+    try {
+      const matches = await glob(filepath, { 
+        cwd: process.cwd(),
+        absolute: false,
+        nodir: true // Only match files, not directories
+      });
+      
+      if (matches.length === 0) {
+        console.error(`ERROR: No files found matching pattern: ${filepath}`);
+        process.exit(1);
+      }
+      
+      if (matches.length === 1) {
+        // Single match - use it directly
+        return matches[0];
+      }
+      
+      // Multiple matches - check if they're all in the same directory
+      const dirs = new Set(matches.map((m: string) => path.dirname(m)));
+      if (dirs.size === 1) {
+        // All files in the same directory - use the directory
+        const dir = Array.from(dirs)[0] as string;
+        console.log(`Multiple files matched (${matches.length}), using directory: ${dir}`);
+        return dir;
+      }
+      
+      // Files in different directories - use the first match
+      console.log(`Multiple files matched (${matches.length}) in different directories, using first match: ${matches[0]}`);
+      return matches[0];
+    } catch (error) {
+      console.error(`ERROR: Failed to expand filepath pattern: ${filepath}`);
+      console.error(error instanceof Error ? error.message : String(error));
+      process.exit(1);
+    }
+  }
+  
+  // No wildcards - return as-is
+  return filepath;
+}
+
 // Validation functions
 function validateParameters(): void {
   // Check sandboxname and sandboxid conflict
@@ -141,10 +186,10 @@ function validateParameters(): void {
 }
 
 // Build Java command arguments
-function buildJavaArgs(): string[] {
+function buildJavaArgs(expandedFilepath: string): string[] {
   const args: string[] = [
     '-jar', 'VeracodeJavaAPI.jar',
-    '-filepath', filepath!,
+    '-filepath', expandedFilepath,
     '-version', version!,
     '-action', 'uploadandscan',
     '-appname', appname!,
@@ -311,8 +356,14 @@ async function main(): Promise<void> {
     await downloadFile(jarUrl, jarPath);
     console.log('Download complete.');
 
+    // Expand filepath wildcards (matching shell behavior)
+    const expandedFilepath = await expandFilepath(filepath!);
+    if (expandedFilepath !== filepath) {
+      console.log(`Expanded filepath from "${filepath}" to "${expandedFilepath}"`);
+    }
+
     // Build Java command
-    const javaArgs = buildJavaArgs();
+    const javaArgs = buildJavaArgs(expandedFilepath);
     console.log('Executing Java command:');
     console.log(`java ${javaArgs.join(' ')}`);
 
